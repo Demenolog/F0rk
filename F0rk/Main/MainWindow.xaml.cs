@@ -3,7 +3,6 @@ using F0rk.Methods.TaskKiller;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
 using System.Windows;
 
 namespace F0rk
@@ -20,14 +19,14 @@ namespace F0rk
 
         private void ClearCache1C(object sender, RoutedEventArgs e)
         {
-
             #region KillTasksAndStopServices
+
+            _1C.ApacheOff();
 
             TasksKiller.Kill(new[] {Process.GetProcessesByName("1cv8c.exe"),
                 Process.GetProcessesByName("httpd.exe")});
 
-
-            #endregion KillTasks
+            #endregion KillTasksAndStopServices
 
             #region ClearFiles
 
@@ -59,15 +58,14 @@ namespace F0rk
                             // ignored
                         }
                     }
-
                 }
             }
+
+            _1C.ApacheOn();
 
             textBoxStatus.Text = "Процесс чистки завершен.";
 
             #endregion ClearFiles
         }
-
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ServiceProcess;
 
 namespace F0rk.Classes
 {
@@ -16,6 +17,36 @@ namespace F0rk.Classes
                 @"D:\Profile\cms\AppData\Local\1C\1cv8"
             };
             return paths;
+        }
+
+        public static void ApacheOff()
+        {
+            var services = new string[]
+            {
+                "apache2.4",
+                "apache2.2"
+            };
+
+            foreach (string service in services)
+            {
+                var sv = new ServiceController(service);
+                sv.Stop();
+            }
+        }
+
+        public static void ApacheOn()
+        {
+            var services = new string[]
+            {
+                "apache2.4",
+                "apache2.2"
+            };
+
+            foreach (string service in services)
+            {
+                var sv = new ServiceController(service);
+                sv.Start();
+            }
         }
     }
 }
