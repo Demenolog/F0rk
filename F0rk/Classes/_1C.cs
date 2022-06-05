@@ -13,7 +13,7 @@ namespace F0rk.Classes
                 @"C:\Contract\DATA\DB_CACHE\WORK\",
                 @"D:\Programs\Contract\DATA\DB_CACHE\WORK\",
                 @"D:\Profile\cms\AppData\Local\1C\1cv8"
-            }
+            };
             return paths;
         }
     }
