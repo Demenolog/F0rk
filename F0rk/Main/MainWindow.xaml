@@ -21,7 +21,16 @@
                     >Чистка кэша 1С</Button>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Другое"></TabItem>
+            <TabItem Header="Другое">
+                <StackPanel>
+                    <Image Source="../Images/pepe.png"
+                           Margin="0,100,0,0"
+                           ></Image>
+                    <Label HorizontalAlignment="Center"
+
+                        >Скоро здесь что-то будет.</Label>
+                </StackPanel>
+            </TabItem>
         </TabControl>
 
         <TextBox x:Name="textBoxStatus"
