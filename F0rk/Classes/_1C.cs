@@ -27,10 +27,17 @@ namespace F0rk.Classes
                 "apache2.2"
             };
 
-            foreach (string service in services)
+            try
             {
-                var sv = new ServiceController(service);
-                sv.Stop();
+                foreach (string service in services)
+                {
+                    var sv = new ServiceController(service);
+                    sv.Stop();
+                }
+            }
+            catch (Exception)
+            {
+                // ignored
             }
         }
 
@@ -42,10 +49,17 @@ namespace F0rk.Classes
                 "apache2.2"
             };
 
-            foreach (string service in services)
+            try
             {
-                var sv = new ServiceController(service);
-                sv.Start();
+                foreach (string service in services)
+                {
+                    var sv = new ServiceController(service);
+                    sv.Start();
+                }
+            }
+            catch (Exception)
+            {
+                // ignored
             }
         }
     }
