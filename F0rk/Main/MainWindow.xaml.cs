@@ -21,10 +21,11 @@ namespace F0rk
         private void ClearCache1C(object sender, RoutedEventArgs e)
         {
 
-            #region KillTasks
+            #region KillTasksAndStopServices
 
             TasksKiller.Kill(new[] {Process.GetProcessesByName("1cv8c.exe"),
                 Process.GetProcessesByName("httpd.exe")});
+
 
             #endregion KillTasks
 
@@ -66,5 +67,7 @@ namespace F0rk
 
             #endregion ClearFiles
         }
+
+
     }
 }
