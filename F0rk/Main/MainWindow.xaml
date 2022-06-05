@@ -13,12 +13,18 @@
             <RowDefinition Height="95*"></RowDefinition>
             <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <Button Margin="10"
-                    Click="ClearCache1C"
+        <TabControl Grid.Row="0">
+            <TabItem Header="Чистка">
+                <StackPanel Grid.Row="0">
+                    <Button Margin="10"
+                            Click="ClearCache1C"
                     >Чистка кэша 1С</Button>
-        </StackPanel>
-        <TextBox x:Name="textBoxStatus" 
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Другое"></TabItem>
+        </TabControl>
+
+        <TextBox x:Name="textBoxStatus"
                  Grid.Row="1"
                  IsReadOnly="True">
         </TextBox>
