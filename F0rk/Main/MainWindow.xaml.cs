@@ -1,5 +1,4 @@
-﻿using F0rk.Classes;
-using F0rk.Methods.TaskKiller;
+﻿using F0rk.Methods.TaskKiller;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -32,19 +31,19 @@ namespace F0rk
 
             try
             {
-                foreach (string path in _1C.PathsToClear())
-                {
-                    var directory = new DirectoryInfo(path);
+                var pathWithEnv = @"%USERPROFILE%\Documents\Test";
+                var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv);
+                var directory = new DirectoryInfo(filePath);
 
-                    foreach (FileInfo file in directory.GetFiles())
-                    {
-                        file.Delete();
-                    }
-                    foreach (DirectoryInfo dir in directory.GetDirectories())
-                    {
-                        dir.Delete(true);
-                    }
+                foreach (FileInfo file in directory.EnumerateFiles())
+                {
+                    file.Delete();
                 }
+                foreach (DirectoryInfo dir in directory.GetDirectories())
+                {
+                    dir.Delete(true);
+                }
+
             }
             catch (Exception exception)
             {
