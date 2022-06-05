@@ -44,7 +44,11 @@ namespace F0rk
                     {
                         dir.Delete(true);
                     }
+
+                    textBoxStatus.Text = path;
                 }
+
+                textBoxStatus.Text = "Процесс очистки закончен";
             }
             catch (Exception exception)
             {
