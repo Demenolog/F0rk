@@ -63,9 +63,11 @@ namespace F0rk
 
             _1C.ApacheOn();
 
-            textBoxStatus.Text = "Процесс чистки завершен.";
+            textBoxStatus.Text = "Процесс чистки 1C завершен.";
 
             #endregion ClearFiles
         }
+
+
     }
 }

@@ -7,7 +7,8 @@
         Title="F0rk"
         Height="450"
         Width="200"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="95*"></RowDefinition>
