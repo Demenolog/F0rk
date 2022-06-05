@@ -3,6 +3,7 @@ using F0rk.Methods.TaskKiller;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows;
 
 namespace F0rk
@@ -19,7 +20,6 @@ namespace F0rk
 
         private void ClearCache1C(object sender, RoutedEventArgs e)
         {
-            textBoxStatus.Text = "Запущен процесс чистки";
 
             #region KillTasks
 
@@ -30,31 +30,39 @@ namespace F0rk
 
             #region ClearFiles
 
-            try
+            foreach (string path in _1C.GetPathsToClear())
             {
-                foreach (string path in _1C.GetPathsToClear())
-                {
-                    var directory = new DirectoryInfo(path);
+                var directory = new DirectoryInfo(path);
 
+                if (directory.Exists)
+                {
                     foreach (FileInfo file in directory.GetFiles())
                     {
-                        file.Delete();
+                        try
+                        {
+                            file.Delete();
+                        }
+                        catch (Exception)
+                        {
+                            // ignored
+                        }
                     }
                     foreach (DirectoryInfo dir in directory.GetDirectories())
                     {
-                        dir.Delete(true);
+                        try
+                        {
+                            dir.Delete(true);
+                        }
+                        catch (Exception)
+                        {
+                            // ignored
+                        }
                     }
 
-                    textBoxStatus.Text = path;
                 }
+            }
 
-                textBoxStatus.Text = "Процесс очистки закончен";
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                throw;
-            }
+            textBoxStatus.Text = "Процесс чистки завершен.";
 
             #endregion ClearFiles
         }
