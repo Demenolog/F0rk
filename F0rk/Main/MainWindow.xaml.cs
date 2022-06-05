@@ -1,5 +1,7 @@
 ﻿using F0rk.Methods.TaskKiller;
+using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 
 namespace F0rk
@@ -14,7 +16,7 @@ namespace F0rk
             InitializeComponent();
         }
 
-        private void Clear1C(object sender, RoutedEventArgs e)
+        private void ClearCache1C(object sender, RoutedEventArgs e)
         {
             textBoxStatus.Text = "Запущен процесс чистки";
 
@@ -25,7 +27,31 @@ namespace F0rk
 
             #endregion KillTasks
 
+            #region ClearFiles
 
+            try
+            {
+                var pathWithEnv = @"%USERPROFILE%\Documents\Test";
+                var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv);
+                var directory = new DirectoryInfo(filePath);
+
+                foreach (FileInfo file in directory.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                foreach (DirectoryInfo dir in directory.GetDirectories())
+                {
+                    dir.Delete(true);
+                }
+
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+
+            #endregion ClearFiles
         }
     }
 }
