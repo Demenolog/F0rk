@@ -8,14 +8,30 @@ namespace F0rk.Methods.TaskKiller
     {
         public static void Kill(Process[][] appsProcesses)
         {
-
-            // TODO ДОБАВИТЬ ЦИКЛ FOR
-
             try
             {
-                foreach (Process process in appsProcesses[0])
+                foreach (Process[] app in appsProcesses)
                 {
-                    process.Kill();
+                    foreach (Process process in app)
+                    {
+                        process.Kill();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                throw;
+            }
+        }
+
+        public static void Kill(Process[] appsProcesses)
+        {
+            try
+            {
+                foreach (Process app in appsProcesses)
+                {
+                    app.Kill();
                 }
             }
             catch (Exception e)
