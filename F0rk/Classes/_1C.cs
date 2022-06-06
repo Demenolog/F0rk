@@ -7,12 +7,11 @@ namespace F0rk.Classes
     {
         private static readonly string[] PathsToClean =
         {
-            Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\AppData\Roaming\1C\1Cv8\"),
-            Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\AppData\Local\1C\1Cv8\"),
-            Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\AppData\Local\temp"),
-            @"C:\Contract\DATA\DB_CACHE\WORK\",
+            @"D:\Profile\cms\AppData\Roaming\1C\1cv8",
+            @"D:\Profile\cms\AppData\Local\Temp",
+            @"D:\Profile\cms\AppData\Local\1C\1cv8",
             @"D:\Programs\Contract\DATA\DB_CACHE\WORK\",
-            @"D:\Profile\cms\AppData\Local\1C\1cv8"
+            @"C:\Contract\DATA\DB_CACHE\WORK\"
         };
 
         private static readonly string[] ApacheService =
