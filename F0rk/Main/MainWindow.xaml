@@ -17,9 +17,11 @@
         <TabControl Grid.Row="0">
             <TabItem Header="Чистка">
                 <StackPanel Grid.Row="0">
-                    <Button Margin="10"
+                    <Button Style="{StaticResource ClearingButton}"
                             Click="ClearCache1C"
                     >Чистка кэша 1С</Button>
+                    <Button Style="{StaticResource ClearingButton}"
+                    >Чистка диска D</Button>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Другое">
