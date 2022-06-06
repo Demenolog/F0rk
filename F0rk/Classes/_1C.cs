@@ -3,7 +3,7 @@ using System.ServiceProcess;
 
 namespace F0rk.Classes
 {
-    public class _1C
+    public static class _1C
     {
         private static readonly string[] PathsToClean =
         {
@@ -30,6 +30,7 @@ namespace F0rk.Classes
                 {
                     var sv = new ServiceController(service);
                     sv.Stop();
+                    sv.WaitForStatus(ServiceControllerStatus.Stopped);
                 }
             }
             catch (Exception)
@@ -46,6 +47,7 @@ namespace F0rk.Classes
                 {
                     var sv = new ServiceController(service);
                     sv.Start();
+                    sv.WaitForStatus(ServiceControllerStatus.Running);
                 }
             }
             catch (Exception)
