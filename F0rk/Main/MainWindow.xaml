@@ -27,11 +27,10 @@
             <TabItem Header="Другое">
                 <StackPanel>
                     <Image Source="../Images/pepe.png"
-                           Margin="0,100,0,0"
+                           Margin="0,80,0,0"
                            ></Image>
                     <Label HorizontalAlignment="Center"
-
-                        >Скоро здесь что-то будет.</Label>
+                    >Скоро здесь что-то будет.</Label>
                 </StackPanel>
             </TabItem>
         </TabControl>
