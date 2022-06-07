@@ -18,10 +18,9 @@ namespace F0rk.Methods.TaskKiller
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                MessageBox.Show(e.Message, "Error",MessageBoxButton.OK,MessageBoxImage.Error);
-                throw;
+                // ignored
             }
         }
 

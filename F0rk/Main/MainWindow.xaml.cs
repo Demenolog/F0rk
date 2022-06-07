@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using F0rk.Methods.ServiceStopper;
 
 namespace F0rk
 {
@@ -71,6 +72,8 @@ namespace F0rk
 
         private void ClearTempAndDiskD(object sender, RoutedEventArgs e)
         {
+            ServiceHandler.ServicesStop(DiskD.GetServicesToStop);
+
 
         }
     }
