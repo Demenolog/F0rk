@@ -23,8 +23,8 @@ namespace F0rk.Classes
 
         public static string[] GetPathsToClear() => PathsToClean;
 
-        public static void ApacheStop() => ServiceHandler.StopServices(ApacheService);
+        public static void ApacheStop() => ServiceHandler.ServicesStop(ApacheService);
 
-        public static void ApacheStart() => ServiceHandler.StartServices(ApacheService);
+        public static void ApacheStart() => ServiceHandler.ServicesStart(ApacheService);
     }
 }

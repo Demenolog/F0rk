@@ -9,7 +9,7 @@ namespace F0rk.Methods.ServiceStopper
 {
     public static class ServiceHandler
     {
-        public static void StopServices(string[] services)
+        public static void ServicesStop(string[] services)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace F0rk.Methods.ServiceStopper
             }
         }
 
-        public static void StartServices(string[] services)
+        public static void ServicesStart(string[] services)
         {
             try
             {
