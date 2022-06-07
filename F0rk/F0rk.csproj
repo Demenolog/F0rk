@@ -83,6 +83,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\DiskD.cs" />
     <Compile Include="Classes\_1C.cs" />
     <Compile Include="Main\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -94,7 +95,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Methods\TaskKiller\TasksKiller.cs" />
+    <Compile Include="Methods\ServiceHandler\ServiceHandler.cs" />
+    <Compile Include="Methods\TasksHandler\TasksHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

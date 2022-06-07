@@ -23,7 +23,7 @@ namespace F0rk
 
             _1C.ApacheOff();
 
-            TasksKiller.Kill(new[] {Process.GetProcessesByName("1cv8c.exe"),
+            TasksHandler.KillTasks(new[] {Process.GetProcessesByName("1cv8c.exe"),
                 Process.GetProcessesByName("httpd.exe")});
 
             #endregion KillTasksAndStopServices

@@ -4,9 +4,9 @@ using System.Windows;
 
 namespace F0rk.Methods.TaskKiller
 {
-    public static class TasksKiller
+    public static class TasksHandler
     {
-        public static void Kill(Process[][] appsProcesses)
+        public static void KillTasks(Process[][] appsProcesses)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace F0rk.Methods.TaskKiller
             }
         }
 
-        public static void Kill(Process[] appsProcesses)
+        public static void KillTasks(Process[] appsProcesses)
         {
             try
             {
