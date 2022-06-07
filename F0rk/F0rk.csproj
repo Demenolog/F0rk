@@ -95,6 +95,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Methods\DirectoryCleaner\DirectoryCleaner.cs" />
     <Compile Include="Methods\ServiceHandler\ServiceHandler.cs" />
     <Compile Include="Methods\TasksHandler\TasksHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
