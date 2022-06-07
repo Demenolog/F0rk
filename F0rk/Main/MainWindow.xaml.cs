@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using F0rk.Methods.DirectoryCleaner;
 using F0rk.Methods.ServiceStopper;
 
 namespace F0rk
@@ -31,36 +32,7 @@ namespace F0rk
 
             #region ClearFiles
 
-            foreach (string path in _1C.GetPathsToClear())
-            {
-                var directory = new DirectoryInfo(path);
-
-                if (directory.Exists)
-                {
-                    foreach (FileInfo file in directory.GetFiles())
-                    {
-                        try
-                        {
-                            file.Delete();
-                        }
-                        catch (Exception)
-                        {
-                            // ignored
-                        }
-                    }
-                    foreach (DirectoryInfo dir in directory.GetDirectories())
-                    {
-                        try
-                        {
-                            dir.Delete(true);
-                        }
-                        catch (Exception)
-                        {
-                            // ignored
-                        }
-                    }
-                }
-            }
+            DirectoryCleaner.CompleteCleanup(_1C.GetPathsToClear());
 
             _1C.ApacheStart();
 
