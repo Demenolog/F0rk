@@ -1,4 +1,5 @@
-﻿using System;
+﻿using F0rk.Methods.ServiceStopper;
+using System;
 using System.ServiceProcess;
 
 namespace F0rk.Classes
@@ -22,38 +23,8 @@ namespace F0rk.Classes
 
         public static string[] GetPathsToClear() => PathsToClean;
 
-        public static void ApacheOff()
-        {
-            try
-            {
-                foreach (string service in ApacheService)
-                {
-                    var sv = new ServiceController(service);
-                    sv.Stop();
-                    sv.WaitForStatus(ServiceControllerStatus.Stopped);
-                }
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
-        }
+        public static void ApacheStop() => ServiceHandler.StopServices(ApacheService);
 
-        public static void ApacheOn()
-        {
-            try
-            {
-                foreach (string service in ApacheService)
-                {
-                    var sv = new ServiceController(service);
-                    sv.Start();
-                    sv.WaitForStatus(ServiceControllerStatus.Running);
-                }
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
-        }
+        public static void ApacheStart() => ServiceHandler.StartServices(ApacheService);
     }
 }

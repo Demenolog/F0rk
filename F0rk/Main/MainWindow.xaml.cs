@@ -21,7 +21,7 @@ namespace F0rk
         {
             #region KillTasksAndStopServices
 
-            _1C.ApacheOff();
+            _1C.ApacheStop();
 
             TasksHandler.KillTasks(new[] {Process.GetProcessesByName("1cv8c.exe"),
                 Process.GetProcessesByName("httpd.exe")});
@@ -61,7 +61,7 @@ namespace F0rk
                 }
             }
 
-            _1C.ApacheOn();
+            _1C.ApacheStart();
 
             textBoxStatus.Text = "Процесс чистки 1C завершен.";
 
