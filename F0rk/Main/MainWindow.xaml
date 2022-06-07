@@ -21,7 +21,8 @@
                             Click="ClearCache1C"
                     >Чистка кэша 1С</Button>
                     <Button Style="{StaticResource ClearingButton}"
-                    >Чистка диска D</Button>
+                            Click="ClearTempAndDiskD"
+                    >Чистка темпа и диска D</Button>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Другое">

@@ -69,5 +69,9 @@ namespace F0rk
         }
 
 
+        private void ClearTempAndDiskD(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
