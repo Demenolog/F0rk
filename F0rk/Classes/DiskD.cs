@@ -4,7 +4,7 @@
     {
         private static readonly string[] ServicesToStop =
         {
-            "bits",
+            "BITS",
             "wuauserv",
             "cryptsvc",
         };

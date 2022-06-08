@@ -34,6 +34,8 @@ namespace F0rk
         private void ClearTempAndDiskD(object sender, RoutedEventArgs e)
         {
             ServiceHandler.ServicesStop(DiskD.GetServicesToStop);
+
+            textBoxStatus.Text = "END";
         }
     }
 }
