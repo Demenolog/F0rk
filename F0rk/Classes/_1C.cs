@@ -1,5 +1,5 @@
-﻿using F0rk.Methods.ServiceStopper;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using F0rk.Methods.ServiceHandler;
 
 namespace F0rk.Classes
 {
@@ -10,8 +10,7 @@ namespace F0rk.Classes
             @"D:\Profile\cms\AppData\Roaming\1C\1cv8\",
             @"D:\Profile\cms\AppData\Local\Temp\",
             @"D:\Profile\cms\AppData\Local\1C\1cv8\",
-            @"D:\Programs\Contract\DATA\DB_CACHE\WORK\",
-            @"C:\Contract\DATA\DB_CACHE\WORK\"
+            @"D:\Programs\Contract\DATA\DB_CACHE\WORK\"
         };
 
         private static readonly string[] Tasks =

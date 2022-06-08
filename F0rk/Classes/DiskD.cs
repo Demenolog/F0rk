@@ -2,13 +2,13 @@
 {
     internal static class DiskD
     {
-        private static readonly string[] ServicesToStop =
+        private static readonly string[] Services =
         {
             "BITS",
             "wuauserv",
-            "cryptsvc",
+            "cryptsvc"
         };
 
-        public static string[] GetServicesToStop => ServicesToStop;
+        public static string[] GetServicesToStop => Services;
     }
 }
