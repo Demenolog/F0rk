@@ -2,7 +2,6 @@
 using F0rk.Methods.DirectoryCleaner;
 using F0rk.Methods.ServiceStopper;
 using F0rk.Methods.TaskKiller;
-using System.Diagnostics;
 using System.Windows;
 
 namespace F0rk
@@ -21,8 +20,7 @@ namespace F0rk
         {
             _1C.ApacheStop();
 
-            TasksHandler.KillTasks(new[] {Process.GetProcessesByName("1cv8c.exe"),
-                Process.GetProcessesByName("httpd.exe")});
+            TasksHandler.KillTasks(_1C.GetTasksToKill());
 
             DirectoryCleaner.CompleteCleanup(_1C.GetPathsToClear());
 

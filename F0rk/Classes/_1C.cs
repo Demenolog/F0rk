@@ -1,6 +1,5 @@
 ﻿using F0rk.Methods.ServiceStopper;
-using System;
-using System.ServiceProcess;
+using System.Diagnostics;
 
 namespace F0rk.Classes
 {
@@ -15,6 +14,12 @@ namespace F0rk.Classes
             @"C:\Contract\DATA\DB_CACHE\WORK\"
         };
 
+        private static readonly string[] Tasks =
+        {
+            "1cv8c.exe",
+            "httpd.exe"
+        };
+
         private static readonly string[] ApacheService =
         {
             "apache2.4",
@@ -26,5 +31,17 @@ namespace F0rk.Classes
         public static void ApacheStop() => ServiceHandler.ServicesStop(ApacheService);
 
         public static void ApacheStart() => ServiceHandler.ServicesStart(ApacheService);
+
+        public static Process[][] GetTasksToKill()
+        {
+            var processes = new Process[Tasks.Length][];
+
+            for (int i = 0; i < Tasks.Length; i++)
+            {
+                processes[i] = Process.GetProcessesByName(Tasks[i]);
+            }
+
+            return processes;
+        }
     }
 }
