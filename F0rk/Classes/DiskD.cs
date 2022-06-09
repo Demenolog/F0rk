@@ -30,6 +30,7 @@
             "soffice.exe",
             "soffice.bin",
             "scalc.exe",
+            "winmail.exe",
             "swriter.exe"
         };
 
