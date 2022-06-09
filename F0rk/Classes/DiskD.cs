@@ -23,12 +23,19 @@
         private static readonly string[] Tasks =
         {
             "1cv8c.exe",
-            "httpd.exe"
+            "httpd.exe",
+            "iexplore.exe",
+            "chrome.exe",
+            "wmplayer.exe",
+            "soffice.exe",
+            "soffice.bin",
+            "scalc.exe",
+            "swriter.exe"
         };
 
         private static readonly string[] Services =
         {
-            "BITS",
+            "bits",
             "wuauserv",
             "cryptsvc"
         };
