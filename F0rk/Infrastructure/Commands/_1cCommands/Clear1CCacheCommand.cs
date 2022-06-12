@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using F0rk.ViewModels;
 using F0rk.Classes;
 using F0rk.Infrastructure.Commands.Base;
 using F0rk.Methods.DirectoryCleaner;
