@@ -1,8 +1,8 @@
 ﻿using F0rk.Classes;
 using F0rk.Methods.DirectoryCleaner;
+using F0rk.Methods.ServiceHandler;
 using F0rk.Methods.TaskKiller;
 using System.Windows;
-using F0rk.Methods.ServiceHandler;
 
 namespace F0rk
 {

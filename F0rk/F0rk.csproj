@@ -75,7 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Main\MainWindow.xaml">
+    <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -83,9 +83,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\DiskD.cs" />
-    <Compile Include="Classes\_1C.cs" />
-    <Compile Include="Main\MainWindow.xaml.cs">
+    <Compile Include="1_Common\Classes\DiskD.cs" />
+    <Compile Include="1_Common\Classes\_1C.cs" />
+    <Compile Include="Infrastructure\Commands\Base\Command.cs" />
+    <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -95,9 +96,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Methods\DirectoryCleaner\DirectoryCleaner.cs" />
-    <Compile Include="Methods\ServiceHandler\ServiceHandler.cs" />
-    <Compile Include="Methods\TasksHandler\TasksHandler.cs" />
+    <Compile Include="1_Common\Methods\DirectoryCleaner\DirectoryCleaner.cs" />
+    <Compile Include="1_Common\Methods\ServiceHandler\ServiceHandler.cs" />
+    <Compile Include="1_Common\Methods\TasksHandler\TasksHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -123,12 +124,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\pepe.png" />
+    <Folder Include="Models\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Logo\fork-icon.ico" />
+    <Resource Include="1_Common\Images\pepe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="1_Common\Images\Logo\fork-icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fork-icon.ico" />
