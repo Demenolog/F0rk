@@ -34,7 +34,7 @@
             </TabItem>
             <TabItem Header="Другое">
                 <StackPanel>
-                    <Image Source="1_Common/Images/pepe.png"
+                    <Image Source = "../../Old/Images/pepe.png"
                            Margin="0,80,0,0"
                            ></Image>
                     <Label HorizontalAlignment="Center"
