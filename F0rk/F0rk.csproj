@@ -85,8 +85,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Old\Classes\DiskD.cs" />
-    <Compile Include="Old\Classes\_1C.cs" />
+    <Compile Include="Models\Classes\DiskD.cs" />
+    <Compile Include="Models\Classes\_1C.cs" />
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -102,9 +102,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Old\Methods\DirectoryCleaner\DirectoryCleaner.cs" />
-    <Compile Include="Old\Methods\ServiceHandler\ServiceHandler.cs" />
-    <Compile Include="Old\Methods\TasksHandler\TasksHandler.cs" />
+    <Compile Include="Models\Methods\DirectoryCleaner\DirectoryCleaner.cs" />
+    <Compile Include="Models\Methods\ServiceHandler\ServiceHandler.cs" />
+    <Compile Include="Models\Methods\TasksHandler\TasksHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -130,14 +130,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Resource Include="Pictures\Images\pepe.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Old\Images\pepe.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Old\Images\Logo\fork-icon.ico" />
+    <Resource Include="Pictures\Images\Logo\fork-icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fork-icon.ico" />

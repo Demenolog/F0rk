@@ -39,6 +39,8 @@ namespace F0rk.ViewModels
             DirectoryCleaner.CompleteCleanup(_1C.GetPathsToClear());
 
             _1C.ApacheStart();
+
+            TextBoxStatus = "Чистка кэша 1С завершилась.";
         }
 
         #endregion
