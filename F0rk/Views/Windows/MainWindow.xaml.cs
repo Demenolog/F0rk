@@ -16,24 +16,5 @@ namespace F0rk
             InitializeComponent();
         }
 
-        private void ClearCache1C(object sender, RoutedEventArgs e)
-        {
-            _1C.ApacheStop();
-
-            TasksHandler.KillTasks(_1C.GetTasksToKill());
-
-            DirectoryCleaner.CompleteCleanup(_1C.GetPathsToClear());
-
-            _1C.ApacheStart();
-
-            textBoxStatus.Text = "Процесс чистки 1C завершен.";
-        }
-
-        private void ClearTempAndDiskD(object sender, RoutedEventArgs e)
-        {
-            ServiceHandler.ServicesStop(DiskD.GetServicesToStop);
-
-            textBoxStatus.Text = "END";
-        }
     }
 }

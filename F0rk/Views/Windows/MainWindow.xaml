@@ -3,12 +3,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cmd1C="clr-namespace:F0rk.Infrastructure.Commands._1cCommands"
+        xmlns:vm="clr-namespace:F0rk.ViewModels"
         mc:Ignorable="d"
         Title="F0rk"
         Height="450"
         Width="200"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="95*"></RowDefinition>
@@ -17,11 +22,12 @@
         <TabControl Grid.Row="0">
             <TabItem Header="Чистка">
                 <StackPanel Grid.Row="0">
+                    <Button Style="{StaticResource ClearingButton}">Чистка кэша 1С
+                        <Button.Command>
+                            <cmd1C:Clear1CCacheCommand />
+                        </Button.Command>
+                    </Button>
                     <Button Style="{StaticResource ClearingButton}"
-                            Click="ClearCache1C"
-                    >Чистка кэша 1С</Button>
-                    <Button Style="{StaticResource ClearingButton}"
-                            Click="ClearTempAndDiskD"
                             IsEnabled="False"
                     >Чистка темпа и диска D</Button>
                 </StackPanel>
