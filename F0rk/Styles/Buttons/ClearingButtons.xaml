@@ -41,6 +41,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10"
                                 SnapsToDevicePixels="true">
                         <ContentPresenter x:Name="contentPresenter"
                                               Focusable="False"
