@@ -76,6 +76,7 @@ namespace F0rk.Methods.DirectoryCleaner
                     foreach (DirectoryInfo dir in directory.GetDirectories())
                     {
                         DeleteFiles(dir);
+                        DeleteDirectories(dir);
                     }
                     DeleteFiles(directory);
                 }

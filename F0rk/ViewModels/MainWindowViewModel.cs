@@ -1,11 +1,10 @@
-﻿using System.Data.SqlClient;
-using System.Windows.Input;
-using F0rk.Classes;
+﻿using F0rk.Classes;
 using F0rk.Infrastructure.Commands;
 using F0rk.Methods.DirectoryCleaner;
-using F0rk.Methods.ServiceHandler;
 using F0rk.Methods.TaskKiller;
 using F0rk.ViewModels.Base;
+using System.Windows.Input;
+using F0rk.Methods.ServiceHandler;
 
 namespace F0rk.ViewModels
 {
@@ -21,7 +20,7 @@ namespace F0rk.ViewModels
             set => Set(ref _textBoxStatus, value);
         }
 
-        #endregion
+        #endregion Textbox Status
 
         #region Commands
 
@@ -44,32 +43,30 @@ namespace F0rk.ViewModels
             TextBoxStatus = "Чистка кэша 1С завершилась.";
         }
 
-        #endregion
+        #endregion Clear1cCache
 
         #region ClearTempCommand
 
-        public ICommand ClearTempCommand;
+        public ICommand ClearTempCommand { get; }
 
         private bool CanClearTempCommandExecuting(object p) => true;
 
         private void OnClearTempCommandExecuted(object p)
         {
-            //ServiceHandler.ServicesStop(DiskD.GetServicesToStop);
+            ServiceHandler.ServicesStop(DiskD.GetServicesToStop);
 
-            //TasksHandler.KillTasks(DiskD.GetTasksToKill());
+            TasksHandler.KillTasks(DiskD.GetTasksToKill());
 
-            //DirectoryCleaner.CleanUpComplete(DiskD.GetPathsToCompleteClean);
-
-            //DirectoryCleaner.CleanUpDirectories(DiskD.GetPathsToSubfoldersClean);
+            DirectoryCleaner.CleanUpComplete(DiskD.GetPathsToCompleteClean);
 
             DirectoryCleaner.CleanUpDirectories(DiskD.GetPathsToSubfoldersClean);
+
+            TextBoxStatus = "Чистка темпа завершена.";
         }
 
+        #endregion ClearTempCommand
 
-
-        #endregion
-
-        #endregion
+        #endregion Commands
 
         public MainWindowViewModel()
         {
@@ -79,7 +76,7 @@ namespace F0rk.ViewModels
 
             ClearTempCommand = new LambdaCommand(OnClearTempCommandExecuted, CanClearTempCommandExecuting);
 
-            #endregion
+            #endregion Commands
         }
     }
 }

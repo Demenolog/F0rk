@@ -26,7 +26,7 @@
                     >Чистка кэша 1С
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
-                            IsEnabled="False"
+                            Command="{Binding ClearTempCommand}"
                     >Чистка темпа</Button>
                 </StackPanel>
             </TabItem>
