@@ -1,8 +1,10 @@
-﻿namespace F0rk.Classes
+﻿using System.Diagnostics;
+
+namespace F0rk.Classes
 {
     internal static class DiskD
     {
-        private static readonly string[] PathsToCompleteClean =
+        private static readonly string[] PathsesToCompleteClean =
         {
             @"C:\Program Files (x86)\InstallShield Installation Information",
             @"C:\Windows\ccmsetup",
@@ -11,7 +13,7 @@
             @"D:\Profile\cms\AppData\Local\Temp"
         };
 
-        private static readonly string[] PathsToNotCompleteClean =
+        private static readonly string[] PathsToSubfoldersClean =
         {
             @"C:\Windows\SoftwareDistribution",
             @"C:\\Windows\PCHEALTH",
@@ -41,6 +43,24 @@
             "cryptsvc"
         };
 
+        public static Process[][] GetTasksToKill()
+        {
+            var processes = new Process[Tasks.Length][];
+
+            for (int i = 0; i < Tasks.Length; i++)
+            {
+                processes[i] = Process.GetProcessesByName(Tasks[i]);
+            }
+
+            return processes;
+        }
+
         public static string[] GetServicesToStop => Services;
+
+        public static string[] GetPathsToCompleteClean => PathsesToCompleteClean;
+
+        public static string[] GetPathsToSubfoldersClean => PathsToSubfoldersClean;
+
+        
     }
 }

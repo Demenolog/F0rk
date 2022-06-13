@@ -3,6 +3,7 @@ using System.Windows.Input;
 using F0rk.Classes;
 using F0rk.Infrastructure.Commands;
 using F0rk.Methods.DirectoryCleaner;
+using F0rk.Methods.ServiceHandler;
 using F0rk.Methods.TaskKiller;
 using F0rk.ViewModels.Base;
 
@@ -36,12 +37,35 @@ namespace F0rk.ViewModels
 
             TasksHandler.KillTasks(_1C.GetTasksToKill());
 
-            DirectoryCleaner.CompleteCleanup(_1C.GetPathsToClear());
+            DirectoryCleaner.CleanUpComplete(_1C.GetPathsToClear());
 
             _1C.ApacheStart();
 
             TextBoxStatus = "Чистка кэша 1С завершилась.";
         }
+
+        #endregion
+
+        #region ClearTempCommand
+
+        public ICommand ClearTempCommand;
+
+        private bool CanClearTempCommandExecuting(object p) => true;
+
+        private void OnClearTempCommandExecuted(object p)
+        {
+            //ServiceHandler.ServicesStop(DiskD.GetServicesToStop);
+
+            //TasksHandler.KillTasks(DiskD.GetTasksToKill());
+
+            //DirectoryCleaner.CleanUpComplete(DiskD.GetPathsToCompleteClean);
+
+            //DirectoryCleaner.CleanUpDirectories(DiskD.GetPathsToSubfoldersClean);
+
+            DirectoryCleaner.CleanUpDirectories(DiskD.GetPathsToSubfoldersClean);
+        }
+
+
 
         #endregion
 
@@ -52,6 +76,8 @@ namespace F0rk.ViewModels
             #region Commands
 
             Clear1CCacheCommand = new LambdaCommand(OnClear1CCacheCommandExecuted, CanClear1CCacheCommandExecuting);
+
+            ClearTempCommand = new LambdaCommand(OnClearTempCommandExecuted, CanClearTempCommandExecuting);
 
             #endregion
         }

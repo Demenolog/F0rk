@@ -23,8 +23,7 @@
                 <StackPanel Grid.Row="0">
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding Clear1CCacheCommand}"
-
-                            >Чистка кэша 1С
+                    >Чистка кэша 1С
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
                             IsEnabled="False"
@@ -41,8 +40,7 @@
                 </StackPanel>
             </TabItem>
         </TabControl>
-        <TextBox x:Name="textBoxStatus"
-                 Text="{Binding TextBoxStatus}"
+        <TextBox Text="{Binding TextBoxStatus}"
                  Grid.Row="1"
                  IsReadOnly="True">
         </TextBox>
