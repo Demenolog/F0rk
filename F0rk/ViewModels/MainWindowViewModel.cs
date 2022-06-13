@@ -24,7 +24,7 @@ namespace F0rk.ViewModels
 
         #region Commands
 
-        #region Clear1cCache
+        #region Clear1cCacheCommand
 
         public ICommand Clear1CCacheCommand { get; }
 
@@ -40,10 +40,10 @@ namespace F0rk.ViewModels
 
             _1C.ApacheStart();
 
-            TextBoxStatus = "Чистка кэша 1С завершилась.";
+            TextBoxStatus = "Чистка кэша 1С завершена.";
         }
 
-        #endregion Clear1cCache
+        #endregion Clear1cCacheCommand
 
         #region ClearTempCommand
 

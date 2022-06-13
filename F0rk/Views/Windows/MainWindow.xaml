@@ -27,7 +27,12 @@
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding ClearTempCommand}"
-                    >Чистка темпа</Button>
+                    >Чистка темпа
+                    </Button>
+                    <Button Style="{StaticResource ClearingButton}"
+                            IsEnabled="False"
+                    >Чистка почты
+                    </Button>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Другое">
