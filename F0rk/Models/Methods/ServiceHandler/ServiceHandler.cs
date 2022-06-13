@@ -7,43 +7,37 @@ namespace F0rk.Methods.ServiceHandler
     {
         public static void ServicesStop(string[] services)
         {
-            try
+            foreach (string service in services)
             {
-                foreach (string service in services)
-                {
-                    var sc = new ServiceController(service);
+                var sc = new ServiceController(service);
 
-                    if (sc.CanStop)
-                    {
-                        sc.Stop();
-                        sc.WaitForStatus(ServiceControllerStatus.Stopped);
-                    }
+                try
+                {
+                    sc.Stop();
+                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
                 }
-            }
-            catch (Exception)
-            {
-                // ignored
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
         }
 
         public static void ServicesStart(string[] services)
         {
-            try
+            foreach (string service in services)
             {
-                foreach (string service in services)
-                {
-                    var sc = new ServiceController(service);
+                var sc = new ServiceController(service);
 
-                    if (sc.CanPauseAndContinue)
-                    {
-                        sc.Start();
-                        sc.WaitForStatus(ServiceControllerStatus.Running);
-                    }
+                try
+                {
+                    sc.Start();
+                    sc.WaitForStatus(ServiceControllerStatus.Running);
                 }
-            }
-            catch (Exception)
-            {
-                // ignored
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
         }
     }

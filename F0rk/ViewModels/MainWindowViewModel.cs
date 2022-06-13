@@ -55,13 +55,13 @@ namespace F0rk.ViewModels
         {
             ServiceHandler.ServicesStop(DiskD.GetServicesToStop);
 
-            //TasksHandler.KillTasks(DiskD.GetTasksToKill());
+            TasksHandler.KillTasks(DiskD.GetTasksToKill());
 
-            //DirectoryCleaner.CleanUpComplete(DiskD.GetPathsToCompleteClean);
+            DirectoryCleaner.CleanUpComplete(DiskD.GetPathsToCompleteClean);
 
-            //DirectoryCleaner.CleanUpDirectories(DiskD.GetPathsToSubfoldersClean);
+            DirectoryCleaner.CleanUpDirectories(DiskD.GetPathsToSubfoldersClean);
 
-            //TextBoxStatus = "Чистка темпа завершена.";
+            TextBoxStatus = "Чистка темпа завершена.";
         }
 
         #endregion ClearTempCommand
