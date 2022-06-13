@@ -40,7 +40,7 @@ namespace F0rk.Classes
         {
             "bits",
             "wuauserv",
-            "cryptsvc"
+            "CryptSvc"
         };
 
         public static Process[][] GetTasksToKill()

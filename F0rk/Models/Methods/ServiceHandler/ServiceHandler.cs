@@ -12,8 +12,12 @@ namespace F0rk.Methods.ServiceHandler
                 foreach (string service in services)
                 {
                     var sc = new ServiceController(service);
-                    sc.Stop();
-                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
+
+                    if (sc.CanStop)
+                    {
+                        sc.Stop();
+                        sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                    }
                 }
             }
             catch (Exception)
@@ -29,8 +33,12 @@ namespace F0rk.Methods.ServiceHandler
                 foreach (string service in services)
                 {
                     var sc = new ServiceController(service);
-                    sc.Start();
-                    sc.WaitForStatus(ServiceControllerStatus.Running);
+
+                    if (sc.CanPauseAndContinue)
+                    {
+                        sc.Start();
+                        sc.WaitForStatus(ServiceControllerStatus.Running);
+                    }
                 }
             }
             catch (Exception)
