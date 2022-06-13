@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <TabControl Grid.Row="0">
             <TabItem Header="Чистка">
-                <StackPanel Grid.Row="0">
+                <StackPanel>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding Clear1CCacheCommand}"
                     >Чистка кэша 1С
@@ -38,11 +38,12 @@
             <TabItem Header="Другое">
                 <StackPanel>
                     <Image Source = "../../Pictures/Images/pepe.png"
-                           Height="100"
+                           Height="123"
                            Margin="0,80,0,0"
                     ></Image>
                     <Label HorizontalAlignment="Center"
-                    >Скоро здесь что-то будет.</Label>
+                    >Скоро здесь что-то будет.
+                    </Label>
                 </StackPanel>
             </TabItem>
         </TabControl>
