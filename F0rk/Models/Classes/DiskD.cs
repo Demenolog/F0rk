@@ -4,6 +4,8 @@ namespace F0rk.Classes
 {
     internal static class DiskD
     {
+        private static readonly string PathToEmails = @"D:\Profile\cms\AppData\Local\Microsoft\Windows Live Mail\";
+
         private static readonly string[] PathsesToCompleteClean =
         {
             @"C:\Program Files (x86)\InstallShield Installation Information",
@@ -61,6 +63,8 @@ namespace F0rk.Classes
 
         public static string[] GetPathsToSubfoldersClean => PathsToSubfoldersClean;
 
-        
+        public static string GetPathToEmails => PathToEmails;
+
+
     }
 }

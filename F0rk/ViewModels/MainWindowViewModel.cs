@@ -1,10 +1,12 @@
 ﻿using F0rk.Classes;
 using F0rk.Infrastructure.Commands;
 using F0rk.Methods.DirectoryCleaner;
+using F0rk.Methods.ServiceHandler;
 using F0rk.Methods.TaskKiller;
 using F0rk.ViewModels.Base;
+using System;
+using System.IO;
 using System.Windows.Input;
-using F0rk.Methods.ServiceHandler;
 
 namespace F0rk.ViewModels
 {
@@ -66,6 +68,38 @@ namespace F0rk.ViewModels
 
         #endregion ClearTempCommand
 
+        #region ClearMailCommand
+
+        public ICommand ClearMailCommand { get; }
+
+        private bool CanClearMailCommandExecuting(object p) => true;
+
+        private void OnClearMailCommandExecuted(object p)
+        {
+            var path = DiskD.GetPathToEmails;
+
+            var directory = new DirectoryInfo(path);
+
+            foreach (DirectoryInfo dir in directory.GetDirectories())
+            {
+                // TODO ИЗМЕНИТЬ ЛОГИКУ В IF, НЕ ТА ПРОВЕРКА ИДЁТ
+
+                if (dir.FullName.ToUpperInvariant().Contains(path.ToUpperInvariant()))
+                {
+                    foreach (DirectoryInfo emailsDir in dir.GetDirectories())
+                    {
+                        foreach (FileInfo email in emailsDir.GetFiles())
+                        {
+                            var dt = DateTime.Now;
+
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion ClearMailCommand
+
         #endregion Commands
 
         public MainWindowViewModel()
@@ -75,6 +109,8 @@ namespace F0rk.ViewModels
             Clear1CCacheCommand = new LambdaCommand(OnClear1CCacheCommandExecuted, CanClear1CCacheCommandExecuting);
 
             ClearTempCommand = new LambdaCommand(OnClearTempCommandExecuted, CanClearTempCommandExecuting);
+
+            ClearMailCommand = new LambdaCommand(OnClearMailCommandExecuted, CanClearMailCommandExecuting);
 
             #endregion Commands
         }
