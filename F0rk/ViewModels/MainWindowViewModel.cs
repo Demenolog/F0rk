@@ -76,9 +76,7 @@ namespace F0rk.ViewModels
 
         private void OnClearMailCommandExecuted(object p)
         {
-            //var path = DiskD.GetPathToEmails;
-
-            var path = @"D:\Test";
+            var path = DiskD.GetPathToEmails;
 
             var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30,0,0,0));
 
@@ -86,30 +84,30 @@ namespace F0rk.ViewModels
 
             foreach (DirectoryInfo dir in directory.GetDirectories())
             {
-                if (dir.FullName.ToUpperInvariant().Contains("Espoint".ToUpperInvariant()))
+                if (!dir.FullName.ToUpperInvariant().Contains("Espoint".ToUpperInvariant())) continue;
+                foreach (DirectoryInfo emailsDir in dir.GetDirectories())
                 {
-                    foreach (DirectoryInfo emailsDir in dir.GetDirectories())
+                    if (emailsDir.FullName.ToUpperInvariant().Contains("Junk".ToUpperInvariant()))
                     {
-                        if (emailsDir.FullName.ToUpperInvariant().Contains("Junk".ToUpperInvariant()))
+                        foreach (FileInfo email in emailsDir.GetFiles())
                         {
-                            foreach (FileInfo email in emailsDir.GetFiles())
+                            email.Delete();
+                        }
+                    }
+                    else
+                    {
+                        foreach (FileInfo email in emailsDir.GetFiles())
+                        {
+                            if (email.LastWriteTime < todaySubtractMonth)
                             {
                                 email.Delete();
-                            }
-                        }
-                        else
-                        {
-                            foreach (FileInfo email in emailsDir.GetFiles())
-                            {
-                                if (email.LastWriteTime < todaySubtractMonth)
-                                {
-                                    email.Delete();
-                                }
                             }
                         }
                     }
                 }
             }
+
+            TextBoxStatus = "Чистка почты завершена.";
         }
 
         #endregion ClearMailCommand
