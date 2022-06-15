@@ -77,8 +77,12 @@ namespace F0rk.ViewModels
         private void OnClearMailCommandExecuted(object p)
         {
             var path = DiskD.GetPathToEmails;
+
             var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0));
+
             var directory = new DirectoryInfo(path);
+
+            if (!directory.Exists) throw new ArgumentNullException();
 
             foreach (DirectoryInfo dir in directory.GetDirectories())
             {
