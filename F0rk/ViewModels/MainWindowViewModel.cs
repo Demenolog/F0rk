@@ -77,9 +77,7 @@ namespace F0rk.ViewModels
         private void OnClearMailCommandExecuted(object p)
         {
             var path = DiskD.GetPathToEmails;
-
-            var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30,0,0,0));
-
+            var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0));
             var directory = new DirectoryInfo(path);
 
             foreach (DirectoryInfo dir in directory.GetDirectories())
@@ -91,7 +89,14 @@ namespace F0rk.ViewModels
                     {
                         foreach (FileInfo email in emailsDir.GetFiles())
                         {
-                            email.Delete();
+                            try
+                            {
+                                email.Delete();
+                            }
+                            catch (Exception)
+                            {
+                                // ignored
+                            }
                         }
                     }
                     else
@@ -100,7 +105,14 @@ namespace F0rk.ViewModels
                         {
                             if (email.LastWriteTime < todaySubtractMonth)
                             {
-                                email.Delete();
+                                try
+                                {
+                                    email.Delete();
+                                }
+                                catch (Exception)
+                                {
+                                    // ignored
+                                }
                             }
                         }
                     }
