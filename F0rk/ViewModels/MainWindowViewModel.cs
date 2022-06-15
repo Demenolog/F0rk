@@ -76,22 +76,36 @@ namespace F0rk.ViewModels
 
         private void OnClearMailCommandExecuted(object p)
         {
-            var path = DiskD.GetPathToEmails;
+            //var path = DiskD.GetPathToEmails;
+
+            var path = @"D:\Test";
+
+            var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30,0,0,0));
 
             var directory = new DirectoryInfo(path);
 
             foreach (DirectoryInfo dir in directory.GetDirectories())
             {
-                // TODO ИЗМЕНИТЬ ЛОГИКУ В IF, НЕ ТА ПРОВЕРКА ИДЁТ
-
-                if (dir.FullName.ToUpperInvariant().Contains(path.ToUpperInvariant()))
+                if (dir.FullName.ToUpperInvariant().Contains("Espoint".ToUpperInvariant()))
                 {
                     foreach (DirectoryInfo emailsDir in dir.GetDirectories())
                     {
-                        foreach (FileInfo email in emailsDir.GetFiles())
+                        if (emailsDir.FullName.ToUpperInvariant().Contains("Junk".ToUpperInvariant()))
                         {
-                            var dt = DateTime.Now;
-
+                            foreach (FileInfo email in emailsDir.GetFiles())
+                            {
+                                email.Delete();
+                            }
+                        }
+                        else
+                        {
+                            foreach (FileInfo email in emailsDir.GetFiles())
+                            {
+                                if (email.LastWriteTime < todaySubtractMonth)
+                                {
+                                    email.Delete();
+                                }
+                            }
                         }
                     }
                 }

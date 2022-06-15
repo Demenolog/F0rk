@@ -30,7 +30,7 @@
                     >Чистка темпа
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
-                            IsEnabled="False"
+                            Command="{Binding ClearMailCommand}"
                     >Чистка почты
                     </Button>
                 </StackPanel>
