@@ -23,15 +23,42 @@
                 <StackPanel>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding Clear1CCacheCommand}"
-                    >Чистка кэша 1С
+                            >Чистка кэша 1С
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>-Убивает все процессы 1С.</TextBlock>
+                                    <TextBlock>-Останавливает службу апач.</TextBlock>
+                                    <TextBlock>-Удаляет кэш 1С.</TextBlock>
+                                    <TextBlock>-Запускает службу апач.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding ClearTempCommand}"
-                    >Чистка темпа
+                            >Чистка темпа
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>-Останавливает службы обновления win.</TextBlock>
+                                    <TextBlock>-Убивает ряд процессов (1С тоже).</TextBlock>
+                                    <TextBlock>-Выполняет чистку темпа на диске C и D.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding ClearMailCommand}"
-                    >Чистка почты
+                            >Чистка почты
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>-Убивает процессы winmail.</TextBlock>
+                                    <TextBlock>-Удаляет все письма старше 30 дней.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
                     </Button>
                 </StackPanel>
             </TabItem>
