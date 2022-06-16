@@ -12,7 +12,6 @@ namespace F0rk.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-        #region Textbox Status
 
         private string _textBoxStatus;
 
@@ -21,12 +20,6 @@ namespace F0rk.ViewModels
             get => _textBoxStatus;
             set => Set(ref _textBoxStatus, value);
         }
-
-        #endregion Textbox Status
-
-        #region Commands
-
-        #region Clear1cCacheCommand
 
         public ICommand Clear1CCacheCommand { get; }
 
@@ -45,10 +38,6 @@ namespace F0rk.ViewModels
             TextBoxStatus = "Чистка кэша 1С завершена.";
         }
 
-        #endregion Clear1cCacheCommand
-
-        #region ClearTempCommand
-
         public ICommand ClearTempCommand { get; }
 
         private bool CanClearTempCommandExecuting(object p) => true;
@@ -66,10 +55,6 @@ namespace F0rk.ViewModels
             TextBoxStatus = "Чистка темпа завершена.";
         }
 
-        #endregion ClearTempCommand
-
-        #region ClearMailCommand
-
         public ICommand ClearMailCommand { get; }
 
         private bool CanClearMailCommandExecuting(object p) => true;
@@ -82,57 +67,15 @@ namespace F0rk.ViewModels
 
             var directory = new DirectoryInfo(path);
 
-            if (!directory.Exists) throw new ArgumentNullException();
-
-            foreach (DirectoryInfo dir in directory.GetDirectories())
-            {
-                if (!dir.FullName.ToUpperInvariant().Contains("Espoint".ToUpperInvariant())) continue;
-                foreach (DirectoryInfo emailsDir in dir.GetDirectories())
-                {
-                    if (emailsDir.FullName.ToUpperInvariant().Contains("Junk".ToUpperInvariant()))
-                    {
-                        foreach (FileInfo email in emailsDir.GetFiles())
-                        {
-                            try
-                            {
-                                email.Delete();
-                            }
-                            catch (Exception)
-                            {
-                                // ignored
-                            }
-                        }
-                    }
-                    else
-                    {
-                        foreach (FileInfo email in emailsDir.GetFiles())
-                        {
-                            if (email.LastWriteTime < todaySubtractMonth)
-                            {
-                                try
-                                {
-                                    email.Delete();
-                                }
-                                catch (Exception)
-                                {
-                                    // ignored
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            DirectoryCleaner.CleanUpMail(directory, todaySubtractMonth);
 
             TextBoxStatus = "Чистка почты завершена.";
         }
 
-        #endregion ClearMailCommand
-
-        #endregion Commands
+        
 
         public MainWindowViewModel()
         {
-            #region Commands
 
             Clear1CCacheCommand = new LambdaCommand(OnClear1CCacheCommandExecuted, CanClear1CCacheCommandExecuting);
 
@@ -140,7 +83,6 @@ namespace F0rk.ViewModels
 
             ClearMailCommand = new LambdaCommand(OnClearMailCommandExecuted, CanClearMailCommandExecuting);
 
-            #endregion Commands
         }
     }
 }

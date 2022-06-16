@@ -82,5 +82,50 @@ namespace F0rk.Methods.DirectoryCleaner
                 }
             }
         }
+
+        public static void CleanUpMail(DirectoryInfo directory, DateTime todaySubtractMonth)
+        {
+            if (!directory.Exists) throw new ArgumentNullException();
+
+            foreach (DirectoryInfo dir in directory.GetDirectories())
+            {
+                if (!dir.FullName.ToUpperInvariant().Contains("Espoint".ToUpperInvariant())) continue;
+
+                foreach (DirectoryInfo emailsDir in dir.GetDirectories())
+                {
+                    if (emailsDir.FullName.ToUpperInvariant().Contains("Junk".ToUpperInvariant()))
+                    {
+                        foreach (FileInfo email in emailsDir.GetFiles())
+                        {
+                            try
+                            {
+                                email.Delete();
+                            }
+                            catch (Exception)
+                            {
+                                // ignored
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (FileInfo email in emailsDir.GetFiles())
+                        {
+                            if (email.LastWriteTime < todaySubtractMonth)
+                            {
+                                try
+                                {
+                                    email.Delete();
+                                }
+                                catch (Exception)
+                                {
+                                    // ignored
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
