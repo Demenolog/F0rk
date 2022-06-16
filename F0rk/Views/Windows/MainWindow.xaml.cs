@@ -1,10 +1,6 @@
-﻿using F0rk.Classes;
-using F0rk.Methods.DirectoryCleaner;
-using F0rk.Methods.ServiceHandler;
-using F0rk.Methods.TaskKiller;
-using System.Windows;
+﻿using System.Windows;
 
-namespace F0rk
+namespace F0rk.Views.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

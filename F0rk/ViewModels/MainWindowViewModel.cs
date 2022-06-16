@@ -1,17 +1,18 @@
 ﻿using F0rk.Classes;
 using F0rk.Infrastructure.Commands;
-using F0rk.Methods.DirectoryCleaner;
 using F0rk.Methods.ServiceHandler;
 using F0rk.Methods.TaskKiller;
 using F0rk.ViewModels.Base;
 using System;
 using System.IO;
 using System.Windows.Input;
+using F0rk.Models.Methods.DirectoryCleaner;
 
 namespace F0rk.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
+        #region TextBox status
 
         private string _textBoxStatus;
 
@@ -20,6 +21,12 @@ namespace F0rk.ViewModels
             get => _textBoxStatus;
             set => Set(ref _textBoxStatus, value);
         }
+
+        #endregion TextBox status
+
+        #region Commands
+
+        #region Clear up 1C cache command
 
         public ICommand Clear1CCacheCommand { get; }
 
@@ -38,6 +45,10 @@ namespace F0rk.ViewModels
             TextBoxStatus = "Чистка кэша 1С завершена.";
         }
 
+        #endregion Clear 1C cache command
+
+        #region Clear up temp command
+
         public ICommand ClearTempCommand { get; }
 
         private bool CanClearTempCommandExecuting(object p) => true;
@@ -54,6 +65,10 @@ namespace F0rk.ViewModels
 
             TextBoxStatus = "Чистка темпа завершена.";
         }
+
+        #endregion Clear temp command
+
+        #region Clear up mail command
 
         public ICommand ClearMailCommand { get; }
 
@@ -72,10 +87,13 @@ namespace F0rk.ViewModels
             TextBoxStatus = "Чистка почты завершена.";
         }
 
-        
+        #endregion Clear mail command
+
+        #endregion Commands
 
         public MainWindowViewModel()
         {
+            #region Commands
 
             Clear1CCacheCommand = new LambdaCommand(OnClear1CCacheCommandExecuted, CanClear1CCacheCommandExecuting);
 
@@ -83,6 +101,7 @@ namespace F0rk.ViewModels
 
             ClearMailCommand = new LambdaCommand(OnClearMailCommandExecuted, CanClearMailCommandExecuting);
 
+            #endregion Commands
         }
     }
 }

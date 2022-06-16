@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace F0rk.Methods.DirectoryCleaner
+namespace F0rk.Models.Methods.DirectoryCleaner
 {
     public static class DirectoryCleaner
     {
