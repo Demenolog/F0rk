@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 
-namespace F0rk.Methods.TaskKiller
+namespace F0rk.Models.Methods.TasksHandler
 {
     public static class TasksHandler
     {
