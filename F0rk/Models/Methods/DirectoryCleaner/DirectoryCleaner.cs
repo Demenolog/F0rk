@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using F0rk.Models.Methods.TasksHandler;
 
 namespace F0rk.Models.Methods.DirectoryCleaner
 {
@@ -86,6 +88,8 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         public static void CleanUpMail(DirectoryInfo directory, DateTime todaySubtractMonth)
         {
             if (!directory.Exists) throw new ArgumentNullException();
+
+            TasksHandler.TasksHandler.KillTasks(Process.GetProcessesByName("winmail.exe"));
 
             foreach (DirectoryInfo dir in directory.GetDirectories())
             {
