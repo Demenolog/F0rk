@@ -41,7 +41,7 @@
                         <Button.ToolTip>
                             <ToolTip>
                                 <StackPanel>
-                                    <TextBlock>-Останавливает службы обновления win.</TextBlock>
+                                    <TextBlock>-Останавливает службы обновления windows.</TextBlock>
                                     <TextBlock>-Убивает ряд процессов (1С тоже).</TextBlock>
                                     <TextBlock>-Выполняет чистку темпа на диске C и D.</TextBlock>
                                 </StackPanel>
