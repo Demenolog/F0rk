@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
-using F0rk.Models.Methods.TasksHandler;
 
 namespace F0rk.Models.Methods.DirectoryCleaner
 {
@@ -22,6 +20,24 @@ namespace F0rk.Models.Methods.DirectoryCleaner
                 catch (Exception)
                 {
                     // ignored
+                }
+            }
+        }
+
+        private static void DeleteOldEmails(DirectoryInfo emailDirectory, DateTime todaySubtractMonth)
+        {
+            foreach (FileInfo email in emailDirectory.GetFiles())
+            {
+                if (email.LastWriteTime < todaySubtractMonth)
+                {
+                    try
+                    {
+                        email.Delete();
+                    }
+                    catch (Exception)
+                    {
+                        // ignored
+                    }
                 }
             }
         }
@@ -89,42 +105,27 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         {
             if (!directory.Exists) throw new ArgumentNullException();
 
-            foreach (DirectoryInfo dir in directory.GetDirectories())
+            foreach (DirectoryInfo folder in directory.GetDirectories())
             {
-                if (!dir.FullName.ToUpperInvariant().Contains("Espoint".ToUpperInvariant())) continue;
+                if (!folder.FullName.ToUpperInvariant().Contains("Espoint".ToUpperInvariant())) continue;
 
-                foreach (DirectoryInfo emailsDir in dir.GetDirectories())
+                foreach (DirectoryInfo subFolder in folder.GetDirectories())
                 {
-                    if (emailsDir.FullName.ToUpperInvariant().Contains("Junk".ToUpperInvariant()))
+                    if (subFolder.FullName.ToUpperInvariant().Contains("Junk".ToUpperInvariant()))
                     {
-                        foreach (FileInfo email in emailsDir.GetFiles())
+                        DeleteFiles(subFolder);
+                    }
+                    else if (subFolder.FullName.ToUpperInvariant().Contains("Inbox".ToUpperInvariant()))
+                    {
+                        foreach (DirectoryInfo inboxFolder in subFolder.GetDirectories())
                         {
-                            try
-                            {
-                                email.Delete();
-                            }
-                            catch (Exception)
-                            {
-                                // ignored
-                            }
+                            DeleteOldEmails(inboxFolder, todaySubtractMonth);
                         }
+                        DeleteOldEmails(subFolder, todaySubtractMonth);
                     }
                     else
                     {
-                        foreach (FileInfo email in emailsDir.GetFiles())
-                        {
-                            if (email.LastWriteTime < todaySubtractMonth)
-                            {
-                                try
-                                {
-                                    email.Delete();
-                                }
-                                catch (Exception)
-                                {
-                                    // ignored
-                                }
-                            }
-                        }
+                        DeleteOldEmails(subFolder, todaySubtractMonth);
                     }
                 }
             }
