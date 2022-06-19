@@ -8,10 +8,10 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         /// <summary>
         /// Deletes every file in a folder
         /// </summary>
-        /// <param name="directory">Folders to delete files</param>
-        private static void DeleteFiles(DirectoryInfo directory)
+        /// <param name="folders">Folders to delete files</param>
+        private static void DeleteFiles(DirectoryInfo folders)
         {
-            foreach (FileInfo file in directory.GetFiles())
+            foreach (FileInfo file in folders.GetFiles())
             {
                 try
                 {
@@ -24,11 +24,16 @@ namespace F0rk.Models.Methods.DirectoryCleaner
             }
         }
 
-        private static void DeleteOldEmails(DirectoryInfo emailDirectory, DateTime todaySubtractMonth)
+        /// <summary>
+        /// Deletes every file older 30 days in a folder
+        /// </summary>
+        /// <param name="emailsFolder">Folder with emails</param>
+        /// <param name="lastTimeUsedMoreThan">Deletes emails that have not been used for more than x days</param>
+        private static void DeleteOldEmails(DirectoryInfo emailsFolder, DateTime lastTimeUsedMoreThan)
         {
-            foreach (FileInfo email in emailDirectory.GetFiles())
+            foreach (FileInfo email in emailsFolder.GetFiles())
             {
-                if (email.LastWriteTime < todaySubtractMonth)
+                if (email.LastWriteTime < lastTimeUsedMoreThan)
                 {
                     try
                     {
@@ -45,14 +50,14 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         /// <summary>
         /// Deletes all subfolders in a folder
         /// </summary>
-        /// <param name="directory">Folders to remove subfolders</param>
-        private static void DeleteDirectories(DirectoryInfo directory)
+        /// <param name="folders">Folders to remove subfolders</param>
+        private static void DeleteDirectories(DirectoryInfo folders)
         {
-            foreach (DirectoryInfo dir in directory.GetDirectories())
+            foreach (DirectoryInfo subfolder in folders.GetDirectories())
             {
                 try
                 {
-                    dir.Delete(true);
+                    subfolder.Delete(true);
                 }
                 catch (Exception)
                 {
