@@ -63,6 +63,15 @@
                     </Button>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="Оптимизация">
+                <StackPanel>
+                    <Button
+                        Style="{StaticResource ClearingButton}"
+                        IsEnabled="False"
+                    >Увеличение файла подкачки
+                    </Button>
+                </StackPanel>
+            </TabItem>
             <TabItem Header="Другое">
                 <StackPanel>
                     <Image Source = "../../Pictures/Images/pepe.png"
