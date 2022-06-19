@@ -3,6 +3,7 @@ using F0rk.Infrastructure.Commands;
 using F0rk.Methods.ServiceHandler;
 using F0rk.ViewModels.Base;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Input;
 using F0rk.Models.Methods.DirectoryCleaner;
@@ -76,9 +77,11 @@ namespace F0rk.ViewModels
 
         private void OnClearMailCommandExecuted(object p)
         {
+            TasksHandler.KillTasks(Process.GetProcesses("winmail.exe"));
+
             var path = DiskD.GetPathToEmails;
 
-            var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0));
+            var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30,0,0,0));
 
             var directory = new DirectoryInfo(path);
 

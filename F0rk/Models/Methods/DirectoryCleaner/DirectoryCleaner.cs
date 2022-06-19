@@ -89,8 +89,6 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         {
             if (!directory.Exists) throw new ArgumentNullException();
 
-            TasksHandler.TasksHandler.KillTasks(Process.GetProcessesByName("winmail.exe"));
-
             foreach (DirectoryInfo dir in directory.GetDirectories())
             {
                 if (!dir.FullName.ToUpperInvariant().Contains("Espoint".ToUpperInvariant())) continue;
