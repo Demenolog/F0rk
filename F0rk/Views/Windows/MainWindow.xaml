@@ -68,11 +68,11 @@
                     <Button
                         Style="{StaticResource ClearingButton}"
                         IsEnabled="False"
-                    >Увеличение файла подкачки
+                    >Увеличение pagefile.sys
                     </Button>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Другое">
+            <TabItem>
                 <StackPanel>
                     <Image Source = "../../Pictures/Images/pepe.png"
                            Height="123"
