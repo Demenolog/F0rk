@@ -25,7 +25,7 @@ namespace F0rk.ViewModels
 
         #endregion TextBox status
 
-        #region Commands
+        #region Clearing commands
 
         #region Clear up 1C cache command
 
@@ -90,11 +90,17 @@ namespace F0rk.ViewModels
 
         #endregion Clear mail command
 
-        #endregion Commands
+        #endregion Clearing commands
+
+        #region Optimisation commands
+
+        
+
+        #endregion
 
         public MainWindowViewModel()
         {
-            #region Commands
+            #region Clearing commands
 
             Clear1CCacheCommand = new LambdaCommand(OnClear1CCacheCommandExecuted, CanClear1CCacheCommandExecuting);
 
@@ -102,7 +108,13 @@ namespace F0rk.ViewModels
 
             ClearMailCommand = new LambdaCommand(OnClearMailCommandExecuted, CanClearMailCommandExecuting);
 
-            #endregion Commands
+            #endregion Clearing commands
+
+            #region Optimisation commands
+
+            
+
+            #endregion
         }
     }
 }
