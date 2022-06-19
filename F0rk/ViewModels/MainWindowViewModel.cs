@@ -94,7 +94,14 @@ namespace F0rk.ViewModels
 
         #region Optimisation commands
 
-        
+        public ICommand IncreasePagefileCommand { get; }
+
+        private bool CanIncreasePagefileCommandExecuting(object p) => true;
+
+        private void OnIncreasePagefileCommandExecuted(object p)
+        {
+            
+        }
 
         #endregion
 
