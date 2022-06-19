@@ -58,7 +58,7 @@ namespace F0rk.ViewModels
         {
             ServiceHandler.ServicesStop(DiskD.GetServicesToStop);
 
-            TasksHandler.KillTasks(DiskD.GetTasksToKill());
+            TasksHandler.KillTasks(DiskD.GetTasksToKill(DiskD.GetCommonTasksNames));
 
             DirectoryCleaner.CleanUpComplete(DiskD.GetPathsToCompleteClean);
 
@@ -77,13 +77,11 @@ namespace F0rk.ViewModels
 
         private void OnClearMailCommandExecuted(object p)
         {
-            TasksHandler.KillTasks(Process.GetProcesses("winmail.exe"));
+            TasksHandler.KillTasks(DiskD.GetTasksToKill(DiskD.GetEmailTasksNames));
 
-            var path = DiskD.GetPathToEmails;
+            var directory = new DirectoryInfo(DiskD.GetPathToEmails);
 
             var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30,0,0,0));
-
-            var directory = new DirectoryInfo(path);
 
             DirectoryCleaner.CleanUpMail(directory, todaySubtractMonth);
 
