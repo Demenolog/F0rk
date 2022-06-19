@@ -35,8 +35,7 @@ namespace F0rk.Models.Methods.TasksHandler
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error",MessageBoxButton.OK,MessageBoxImage.Error);
-                throw;
+                // ignore
             }
         }
     }
