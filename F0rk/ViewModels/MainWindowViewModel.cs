@@ -1,13 +1,13 @@
 ﻿using F0rk.Classes;
 using F0rk.Infrastructure.Commands;
 using F0rk.Methods.ServiceHandler;
-using F0rk.ViewModels.Base;
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Windows.Input;
+using F0rk.Models.Classes;
 using F0rk.Models.Methods.DirectoryCleaner;
 using F0rk.Models.Methods.TasksHandler;
+using F0rk.ViewModels.Base;
+using System;
+using System.IO;
+using System.Windows.Input;
 
 namespace F0rk.ViewModels
 {
@@ -46,7 +46,7 @@ namespace F0rk.ViewModels
             TextBoxStatus = "Чистка кэша 1С завершена.";
         }
 
-        #endregion Clear 1C cache command
+        #endregion Clear up 1C cache command
 
         #region Clear up temp command
 
@@ -67,7 +67,7 @@ namespace F0rk.ViewModels
             TextBoxStatus = "Чистка темпа завершена.";
         }
 
-        #endregion Clear temp command
+        #endregion Clear up temp command
 
         #region Clear up mail command
 
@@ -81,18 +81,20 @@ namespace F0rk.ViewModels
 
             var directory = new DirectoryInfo(DiskD.GetPathToEmails);
 
-            var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30,0,0,0));
+            var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0));
 
             DirectoryCleaner.CleanUpMail(directory, todaySubtractMonth);
 
             TextBoxStatus = "Чистка почты завершена.";
         }
 
-        #endregion Clear mail command
+        #endregion Clear up mail command
 
         #endregion Clearing commands
 
         #region Optimisation commands
+
+        #region Increase pagefile command
 
         public ICommand IncreasePagefileCommand { get; }
 
@@ -100,10 +102,20 @@ namespace F0rk.ViewModels
 
         private void OnIncreasePagefileCommandExecuted(object p)
         {
-            
+            var app = "cmd";
+
+            string[] commands = new[]
+            {
+                @"wmic pagefileset create name=""C:\pagefile.sys""",
+                @"wmic pagefileset where name=""C:\pagefile.sys"" set InitialSize=3072,MaximumSize=4096"
+            };
+
+            Cmd.RunProcess(app, commands);
         }
 
-        #endregion
+        #endregion Increase pagefile command
+
+        #endregion Optimisation commands
 
         public MainWindowViewModel()
         {
@@ -119,9 +131,9 @@ namespace F0rk.ViewModels
 
             #region Optimisation commands
 
-            
+            IncreasePagefileCommand = new LambdaCommand(OnIncreasePagefileCommandExecuted, CanIncreasePagefileCommandExecuting);
 
-            #endregion
+            #endregion Optimisation commands
         }
     }
 }
