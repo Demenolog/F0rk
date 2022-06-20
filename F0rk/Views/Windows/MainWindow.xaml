@@ -67,7 +67,8 @@
                 <StackPanel>
                     <Button
                         Style="{StaticResource ClearingButton}"
-                        IsEnabled="False"
+                        Command="{Binding IncreasePagefileCommand}"
+                        IsEnabled="True"
                     >Увеличение pagefile.sys
                     </Button>
                 </StackPanel>
