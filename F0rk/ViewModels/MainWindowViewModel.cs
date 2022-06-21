@@ -102,15 +102,7 @@ namespace F0rk.ViewModels
 
         private void OnIncreasePagefileCommandExecuted(object p)
         {
-            var app = "cmd";
-
-            string[] commands = new[]
-            {
-                @"wmic pagefileset create name=""C:\pagefile.sys""",
-                @"wmic pagefileset where name=""C:\pagefile.sys"" set InitialSize=3072,MaximumSize=4096"
-            };
-
-            Cmd.RunProcess(app, commands);
+            Optimisation.IncreasePagefile();
         }
 
         #endregion Increase pagefile command
