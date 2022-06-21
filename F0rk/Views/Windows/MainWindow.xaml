@@ -68,8 +68,15 @@
                     <Button
                         Style="{StaticResource ClearingButton}"
                         Command="{Binding IncreasePagefileCommand}"
-                        IsEnabled="True"
                     >Увеличение pagefile.sys
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>-Увеличивает pagefile до 3,5 Гб на диске C и D.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+
                     </Button>
                 </StackPanel>
             </TabItem>
