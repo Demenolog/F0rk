@@ -14,14 +14,19 @@ namespace TestConsole
         {
             string[] commands = new[]
             {
-                @"wmic pagefileset create name=""C:\pagefile.sys""",
+                @"computersystem set AutomaticManagedPagefile=False",
+                @"pagefileset delete",
+                @"pagefileset create name=""C:\\pagefile.sys""",
+                @"pagefileset where name=""C:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546",
+                @"pagefileset create name=""D:\\pagefile.sys""",
+                @"pagefileset where name=""D:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546"
             };
 
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "cmd.exe",
+                    FileName = "wmic.exe",
                     RedirectStandardInput = true,
                     UseShellExecute = false
                 }
@@ -34,10 +39,13 @@ namespace TestConsole
                 {
                     foreach (string command in commands)
                     {
-                        pWriter.WriteLine("/k " + command);
+                        pWriter.WriteLine(command + " /NOINTERACTIVE");
+                        //pWriter.WriteLine();
                     }
                 }
+
             }
         }
+
     }
 }
