@@ -12,38 +12,21 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            string[] commands = new[]
-            {
-                @"computersystem set AutomaticManagedPagefile=False",
-                @"pagefileset delete",
-                @"pagefileset create name=""C:\\pagefile.sys""",
-                @"pagefileset where name=""C:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546",
-                @"pagefileset create name=""D:\\pagefile.sys""",
-                @"pagefileset where name=""D:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546"
-            };
+            KillTasks(Process.GetProcessesByName("Surfshark"));
 
-            var process = new Process
+            void KillTasks(Process[] appsProcesses)
             {
-                StartInfo = new ProcessStartInfo
+                try
                 {
-                    FileName = "wmic.exe",
-                    RedirectStandardInput = true,
-                    UseShellExecute = false
-                }
-            };
-            process.Start();
-
-            using (StreamWriter pWriter = process.StandardInput)
-            {
-                if (pWriter.BaseStream.CanWrite)
-                {
-                    foreach (string command in commands)
+                    foreach (Process app in appsProcesses)
                     {
-                        pWriter.WriteLine(command + " /NOINTERACTIVE");
-                        //pWriter.WriteLine();
+                        app.Kill();
                     }
                 }
-
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
         }
 
