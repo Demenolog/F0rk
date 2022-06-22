@@ -20,8 +20,8 @@ namespace F0rk.Classes
         {
             EmailTasksNames = new[]
             {
-                "iexplore.exe",
-                "wlmail.exe"
+                "iexplore",
+                "wlmail"
             };
 
             PathsesToCompleteClean = new[]
@@ -52,16 +52,15 @@ namespace F0rk.Classes
 
             Tasks = new[]
             {
-                "1cv8c.exe",
-                "httpd.exe",
-                "iexplore.exe",
-                "chrome.exe",
-                "wmplayer.exe",
-                "soffice.exe",
-                "soffice.bin",
-                "scalc.exe",
-                "wlmail.exe",
-                "swriter.exe"
+                "1cv8s",
+                "httpd",
+                "iexplore",
+                "chrome",
+                "wmplayer",
+                "soffice",
+                "scalc",
+                "wlmail",
+                "swriter"
             };
         }
 
