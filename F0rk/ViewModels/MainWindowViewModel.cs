@@ -110,6 +110,23 @@ namespace F0rk.ViewModels
 
         #endregion Optimisation commands
 
+        #region Other setting
+
+        #region Restart Sap\Apache command
+
+        public ICommand RestartSapApache { get; }
+
+        private bool CanRestartSapApacheCommandExecuting(object p) => true;
+
+        private void OnRestartSapApacheCommandExecuted(object p)
+        {
+            
+        }
+
+        #endregion
+
+        #endregion
+
         public MainWindowViewModel()
         {
             #region Clearing commands
@@ -127,6 +144,12 @@ namespace F0rk.ViewModels
             IncreasePagefileCommand = new LambdaCommand(OnIncreasePagefileCommandExecuted, CanIncreasePagefileCommandExecuting);
 
             #endregion Optimisation commands
+
+            #region Other settings commands
+
+            RestartSapApache = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
+
+            #endregion
         }
     }
 }

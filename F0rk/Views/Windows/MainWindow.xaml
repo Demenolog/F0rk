@@ -67,7 +67,7 @@
                 <StackPanel>
                     <Button
                         Style="{StaticResource ClearingButton}"
-                        Command="{Binding IncreasePagefileCommand}"
+                        Command="{Binding RestartSapApache}"
                     >Увеличение pagefile.sys
                         <Button.ToolTip>
                             <ToolTip>
@@ -76,7 +76,14 @@
                                 </StackPanel>
                             </ToolTip>
                         </Button.ToolTip>
-
+                    </Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Разное">
+                <StackPanel>
+                    <Button Style="{StaticResource ClearingButton}"
+                            IsEnabled="False"
+                        >Перезапуск Sap\Apache
                     </Button>
                 </StackPanel>
             </TabItem>
