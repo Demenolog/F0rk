@@ -23,8 +23,8 @@ namespace F0rk.Classes
 
             Tasks = new[]
             {
-                "1cv8c.exe",
-                "httpd.exe"
+                "1cv8c",
+                "httpd"
             };
 
             ApacheService = new[]
@@ -32,6 +32,7 @@ namespace F0rk.Classes
                 "apache2.4",
                 "apache2.2"
             };
+
         }
 
         public static void ApacheStart() => ServiceHandler.ServicesStart(ApacheService);
