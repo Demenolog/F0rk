@@ -40,5 +40,11 @@ namespace F0rk.Methods.ServiceHandler
                 }
             }
         }
+
+        public static void ServicesRestart(string[] services)
+        {
+            ServicesStop(services);
+            ServicesStart(services);
+        }
     }
 }
