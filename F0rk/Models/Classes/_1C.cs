@@ -9,8 +9,8 @@ namespace F0rk.Classes
 
         private static readonly string[] PathsToClean;
 
+        private static readonly string SapService;
         private static readonly string[] Tasks;
-
         static _1C()
         {
             PathsToClean = new[]
@@ -33,6 +33,13 @@ namespace F0rk.Classes
                 "apache2.2"
             };
 
+            SapService = "SAPAdapterEngine";
+        }
+
+        public static void ApacheRestart()
+        {
+            ApacheStop();
+            ApacheStart();
         }
 
         public static void ApacheStart() => ServiceHandler.ServicesStart(ApacheService);
@@ -51,6 +58,18 @@ namespace F0rk.Classes
             }
 
             return processes;
+        }
+
+        public static void SapApacheRestart()
+        {
+            string[] servicesToRestart = new[]
+            {
+                ApacheService[0],
+                ApacheService[1],
+                SapService
+            };
+
+            ServiceHandler.ServicesRestart(servicesToRestart);
         }
     }
 }
