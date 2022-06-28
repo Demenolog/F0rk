@@ -83,8 +83,17 @@
                 <StackPanel>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding RestartSapApache}"
-                            IsEnabled="True"
                         >Перезапуск Sap\Apache
+                    </Button>
+                    <Button Style="{StaticResource ClearingButton}"
+                            Command="{Binding RestartSapApache}"
+                            IsEnabled="False"
+                    >Регистрация пинпада
+                    </Button>
+                    <Button Style="{StaticResource ClearingButton}"
+                            Command="{Binding RestartSapApache}"
+                            IsEnabled="False"
+                    >Разрегистрация пинпада
                     </Button>
                 </StackPanel>
             </TabItem>
