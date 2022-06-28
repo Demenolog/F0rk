@@ -47,7 +47,7 @@ namespace F0rk.Models.Methods.TasksHandler
                 {
                     StartInfo = new ProcessStartInfo
                     {
-                        FileName = filename + ".exe",
+                        FileName = filename,
                         RedirectStandardInput = true,
                         UseShellExecute = false
                     }
