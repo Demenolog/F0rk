@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ServiceProcess;
 
-namespace F0rk.Methods.ServiceHandler
+namespace F0rk.Models.Methods.ServiceHandler
 {
     public static class ServiceHandler
     {
