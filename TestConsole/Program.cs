@@ -12,22 +12,9 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            KillTasks(Process.GetProcessesByName("Surfshark"));
+            string sapUrl = @"http://127.0.0.1:8200/";
 
-            void KillTasks(Process[] appsProcesses)
-            {
-                try
-                {
-                    foreach (Process app in appsProcesses)
-                    {
-                        app.Kill();
-                    }
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
-            }
+            Process.Start("chrome.exe", sapUrl + " -incognito");
         }
 
     }
