@@ -1,48 +1,26 @@
-﻿using System.Diagnostics;
-using System.IO;
+﻿using F0rk.Models.Methods.TasksHandler;
 
 namespace F0rk.Models.Classes
 {
     public static class Optimisation
     {
         private static readonly string[] WmicPagefileIncreaseCommands;
+        private static readonly string[] CmdPinpadRegistration;
+        private static readonly string[] CmdPinpadUnregistration;
 
         static Optimisation()
         {
             WmicPagefileIncreaseCommands = new[]
             {
-                @"computersystem set AutomaticManagedPagefile=False",
+                @"computersystem set AutomaticManagedPagefile=False /NOINTERACTIVE",
                 @"pagefileset delete",
-                @"pagefileset create name=""C:\\pagefile.sys""",
-                @"pagefileset where name=""C:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546",
-                @"pagefileset create name=""D:\\pagefile.sys""",
-                @"pagefileset where name=""D:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546"
+                @"pagefileset create name=""C:\\pagefile.sys"" /NOINTERACTIVE",
+                @"pagefileset where name=""C:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE",
+                @"pagefileset create name=""D:\\pagefile.sys"" /NOINTERACTIVE",
+                @"pagefileset where name=""D:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE"
             };
         }
 
-        public static void IncreasePagefile()
-        {
-            var process = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "wmic.exe",
-                    RedirectStandardInput = true,
-                    UseShellExecute = false
-                }
-            };
-            process.Start();
-
-            using (StreamWriter pWriter = process.StandardInput)
-            {
-                if (pWriter.BaseStream.CanWrite)
-                {
-                    foreach (string command in WmicPagefileIncreaseCommands)
-                    {
-                        pWriter.WriteLine(command + " /NOINTERACTIVE");
-                    }
-                }
-            }
-        }
+        public static void IncreasePagefile() => TasksHandler.StartTask("wmic.exe", WmicPagefileIncreaseCommands);
     }
 }
