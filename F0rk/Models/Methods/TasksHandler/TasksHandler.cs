@@ -41,27 +41,31 @@ namespace F0rk.Models.Methods.TasksHandler
 
         public static void StartTask(string filename, string[] commands)
         {
-            using (var process = new Process
+            try
             {
-                StartInfo = new ProcessStartInfo
+                using var process = new Process
                 {
-                    FileName = filename + ".exe",
-                    RedirectStandardInput = true,
-                    UseShellExecute = false
-                }
-            })
-            {
-                process.Start();
-                using (StreamWriter pWriter = process.StandardInput)
-                {
-                    if (pWriter.BaseStream.CanWrite)
+                    StartInfo = new ProcessStartInfo
                     {
-                        foreach (string command in commands)
-                        {
-                            pWriter.WriteLine(command);
-                        }
+                        FileName = filename + ".exe",
+                        RedirectStandardInput = true,
+                        UseShellExecute = false
+                    }
+                };
+                process.Start();
+
+                using StreamWriter pWriter = process.StandardInput;
+                if (pWriter.BaseStream.CanWrite)
+                {
+                    foreach (string command in commands)
+                    {
+                        pWriter.WriteLine(command);
                     }
                 }
+            }
+            catch (Exception)
+            {
+                // ignore
             }
         }
     }
