@@ -1,6 +1,5 @@
 ﻿using F0rk.Classes;
 using F0rk.Infrastructure.Commands;
-using F0rk.Methods.ServiceHandler;
 using F0rk.Models.Classes;
 using F0rk.Models.Methods.DirectoryCleaner;
 using F0rk.Models.Methods.TasksHandler;
@@ -8,6 +7,7 @@ using F0rk.ViewModels.Base;
 using System;
 using System.IO;
 using System.Windows.Input;
+using F0rk.Models.Methods.ServiceHandler;
 
 namespace F0rk.ViewModels
 {
