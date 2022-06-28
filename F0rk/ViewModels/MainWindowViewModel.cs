@@ -6,6 +6,7 @@ using F0rk.Models.Methods.DirectoryCleaner;
 using F0rk.Models.Methods.TasksHandler;
 using F0rk.ViewModels.Base;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Input;
 
@@ -120,12 +121,14 @@ namespace F0rk.ViewModels
 
         private void OnRestartSapApacheCommandExecuted(object p)
         {
-            
+            _1C.SapApacheRestart();
+
+            TextBoxStatus = @"Службы Sap\Apache перезапущены.";
         }
 
-        #endregion
+        #endregion Restart Sap\Apache command
 
-        #endregion
+        #endregion Other setting
 
         public MainWindowViewModel()
         {
@@ -149,7 +152,7 @@ namespace F0rk.ViewModels
 
             RestartSapApache = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
 
-            #endregion
+            #endregion Other settings commands
         }
     }
 }

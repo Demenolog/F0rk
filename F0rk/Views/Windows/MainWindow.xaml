@@ -82,7 +82,8 @@
             <TabItem Header="Разное">
                 <StackPanel>
                     <Button Style="{StaticResource ClearingButton}"
-                            IsEnabled="False"
+                            Command="{Binding RestartSapApache}"
+                            IsEnabled="True"
                         >Перезапуск Sap\Apache
                     </Button>
                 </StackPanel>
