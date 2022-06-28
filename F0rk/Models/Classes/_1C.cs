@@ -1,5 +1,5 @@
-﻿using F0rk.Methods.ServiceHandler;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using F0rk.Models.Methods.ServiceHandler;
 
 namespace F0rk.Classes
 {
