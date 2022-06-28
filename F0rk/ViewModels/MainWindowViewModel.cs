@@ -6,7 +6,6 @@ using F0rk.Models.Methods.DirectoryCleaner;
 using F0rk.Models.Methods.TasksHandler;
 using F0rk.ViewModels.Base;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Windows.Input;
 
@@ -123,11 +122,7 @@ namespace F0rk.ViewModels
         {
             _1C.SapApacheRestart();
 
-            string sapUrl = @"http://127.0.0.1:8200/";
-
             TextBoxStatus = @"Службы Sap\Apache перезапущены.";
-
-            Process.Start("chrome.exe", sapUrl + " -incognito");
         }
 
         #endregion Restart Sap\Apache command
