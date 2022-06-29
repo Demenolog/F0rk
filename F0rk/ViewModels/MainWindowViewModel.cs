@@ -56,7 +56,7 @@ namespace F0rk.ViewModels
 
         private void OnClearTempCommandExecuted(object p)
         {
-            ServiceHandler.ServicesStop(DiskD.GetServicesToStop);
+            ServiceHandler.ServiceStop(DiskD.GetServicesToStop);
 
             TasksHandler.KillTasks(DiskD.GetTasksToKill(DiskD.GetCommonTasksNames));
 
