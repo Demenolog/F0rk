@@ -42,9 +42,9 @@ namespace F0rk.Classes
             ApacheStart();
         }
 
-        public static void ApacheStart() => ServiceHandler.ServicesStart(ApacheService);
+        public static void ApacheStart() => ServiceHandler.ServiceStart(ApacheService);
 
-        public static void ApacheStop() => ServiceHandler.ServicesStop(ApacheService);
+        public static void ApacheStop() => ServiceHandler.ServiceStop(ApacheService);
 
         public static string[] GetPathsToClear() => PathsToClean;
 
@@ -69,7 +69,7 @@ namespace F0rk.Classes
                 SapService
             };
 
-            ServiceHandler.ServicesRestart(servicesToRestart);
+            ServiceHandler.ServiceRestart(servicesToRestart);
         }
     }
 }
