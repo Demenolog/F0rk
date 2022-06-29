@@ -67,7 +67,7 @@
                 <StackPanel>
                     <Button
                         Style="{StaticResource ClearingButton}"
-                        Command="{Binding RestartSapApache}"
+                        Command="{Binding IncreasePagefileCommand}"
                     >Увеличение pagefile.sys
                         <Button.ToolTip>
                             <ToolTip>
@@ -86,12 +86,10 @@
                         >Перезапуск Sap\Apache
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding RestartSapApache}"
                             IsEnabled="False"
                     >Регистрация пинпада
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding RestartSapApache}"
                             IsEnabled="False"
                     >Разрегистрация пинпада
                     </Button>
