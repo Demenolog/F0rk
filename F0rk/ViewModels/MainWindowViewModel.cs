@@ -122,8 +122,6 @@ namespace F0rk.ViewModels
         {
             _1C.SapApacheRestart();
 
-
-
             TextBoxStatus = @"Службы Sap\Apache перезапущены.";
         }
 
