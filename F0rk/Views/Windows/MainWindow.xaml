@@ -90,6 +90,7 @@
                     >Регистрация пинпада
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
+                            Command="{Binding UnregistationPinpad}"
                             IsEnabled="False"
                     >Разрегистрация пинпада
                     </Button>
