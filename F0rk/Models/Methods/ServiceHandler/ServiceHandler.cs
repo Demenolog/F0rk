@@ -5,14 +5,13 @@ namespace F0rk.Models.Methods.ServiceHandler
 {
     public static class ServiceHandler
     {
-        public static void ServicesStop(string[] services)
+        public static void ServiceStop(string[] services)
         {
             foreach (string service in services)
             {
-                var sc = new ServiceController(service);
-
                 try
                 {
+                    using var sc = new ServiceController(service);
                     sc.Stop();
                     sc.WaitForStatus(ServiceControllerStatus.Stopped);
                 }
@@ -23,14 +22,27 @@ namespace F0rk.Models.Methods.ServiceHandler
             }
         }
 
-        public static void ServicesStart(string[] services)
+        public static void ServiceStop(string service)
+        {
+            try
+            {
+                using var sc = new ServiceController(service);
+                sc.Stop();
+                sc.WaitForStatus(ServiceControllerStatus.Stopped);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        public static void ServiceStart(string[] services)
         {
             foreach (string service in services)
             {
-                var sc = new ServiceController(service);
-
                 try
                 {
+                    using var sc = new ServiceController(service);
                     sc.Start();
                     sc.WaitForStatus(ServiceControllerStatus.Running);
                 }
@@ -41,10 +53,30 @@ namespace F0rk.Models.Methods.ServiceHandler
             }
         }
 
-        public static void ServicesRestart(string[] services)
+        public static void ServiceStart(string service)
         {
-            ServicesStop(services);
-            ServicesStart(services);
+            try
+            {
+                using var sc = new ServiceController(service);
+                sc.Start();
+                sc.WaitForStatus(ServiceControllerStatus.Running);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        public static void ServiceRestart(string[] services)
+        {
+            ServiceStop(services);
+            ServiceStart(services);
+        }
+
+        public static void ServiceRestart(string service)
+        {
+            ServiceStop(service);
+            ServiceStart(service);
         }
     }
 }
