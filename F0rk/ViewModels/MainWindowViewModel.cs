@@ -110,7 +110,7 @@ namespace F0rk.ViewModels
 
         #endregion Optimisation commands
 
-        #region Other setting
+        #region Other commands
 
         #region Restart Sap\Apache command
 
