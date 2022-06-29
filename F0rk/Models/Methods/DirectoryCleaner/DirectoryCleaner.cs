@@ -9,7 +9,7 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         /// Deletes every file in a folder
         /// </summary>
         /// <param name="folders">Folders to delete files</param>
-        private static void DeleteFiles(DirectoryInfo folders)
+        private static void DeleteAllFiles(DirectoryInfo folders)
         {
             foreach (FileInfo file in folders.GetFiles())
             {
@@ -51,7 +51,7 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         /// Deletes all subfolders in a folder
         /// </summary>
         /// <param name="folders">Folders to remove subfolders</param>
-        private static void DeleteDirectories(DirectoryInfo folders)
+        private static void DeleteAllDirectories(DirectoryInfo folders)
         {
             foreach (DirectoryInfo subfolder in folders.GetDirectories())
             {
@@ -78,8 +78,8 @@ namespace F0rk.Models.Methods.DirectoryCleaner
 
                 if (directory.Exists)
                 {
-                    DeleteFiles(directory);
-                    DeleteDirectories(directory);
+                    DeleteAllFiles(directory);
+                    DeleteAllDirectories(directory);
                 }
             }
         }
@@ -98,10 +98,10 @@ namespace F0rk.Models.Methods.DirectoryCleaner
                 {
                     foreach (DirectoryInfo dir in directory.GetDirectories())
                     {
-                        DeleteFiles(dir);
-                        DeleteDirectories(dir);
+                        DeleteAllFiles(dir);
+                        DeleteAllDirectories(dir);
                     }
-                    DeleteFiles(directory);
+                    DeleteAllFiles(directory);
                 }
             }
         }
@@ -116,9 +116,10 @@ namespace F0rk.Models.Methods.DirectoryCleaner
 
                 foreach (DirectoryInfo subFolder in folder.GetDirectories())
                 {
-                    if (subFolder.FullName.ToUpperInvariant().Contains("Junk".ToUpperInvariant()))
+                    if (subFolder.FullName.ToUpperInvariant().Contains("Junk".ToUpperInvariant()) ||
+                        subFolder.FullName.ToUpperInvariant().Contains("Deleted Items".ToUpperInvariant()))
                     {
-                        DeleteFiles(subFolder);
+                        DeleteAllFiles(subFolder);
                     }
                     else if (subFolder.FullName.ToUpperInvariant().Contains("Inbox".ToUpperInvariant()))
                     {
