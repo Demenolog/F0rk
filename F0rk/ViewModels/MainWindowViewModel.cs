@@ -127,6 +127,19 @@ namespace F0rk.ViewModels
 
         #endregion Restart Sap\Apache command
 
+        #region Unregistration pinpad command
+
+        public ICommand UnregistationPinpad { get; }
+
+        private bool CanUnregistationPinpadExecuting(object p) => true;
+
+        private void OnUnregistationPinpadExecuted(object p)
+        {
+            
+        }
+
+        #endregion
+
         #endregion Other setting
 
         public MainWindowViewModel()
@@ -147,7 +160,9 @@ namespace F0rk.ViewModels
 
             #endregion Optimisation commands
 
-            #region Other settings commands
+            #region Other commands
+
+            UnregistationPinpad = new LambdaCommand(OnUnregistationPinpadExecuted, CanUnregistationPinpadExecuting);
 
             RestartSapApache = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
 
