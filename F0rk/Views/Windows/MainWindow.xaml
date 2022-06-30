@@ -86,12 +86,11 @@
                         >Перезапуск Sap\Apache
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
-                            IsEnabled="False"
+                            Command="{Binding RegistrationPinpad}"
                     >Регистрация пинпада
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding UnregistationPinpad}"
-                            IsEnabled="False"
                     >Разрегистрация пинпада
                     </Button>
                 </StackPanel>
