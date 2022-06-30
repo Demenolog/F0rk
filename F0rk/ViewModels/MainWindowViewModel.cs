@@ -135,28 +135,7 @@ namespace F0rk.ViewModels
 
         private void OnUnregistationPinpadExecuted(object p)
         {
-            ServiceHandler.ServiceStop(Pinpad.GetPinpadServiceName);
-
-            TasksHandler.StartTask("cmd.exe", Pinpad.GetUnregistrationCommands);
-
-            TextBoxStatus = "Разрегистрация завершена.";
-        }
-
-        #endregion
-
-        #region Registration pinpad command
-
-        public ICommand RegistrationPinpad { get; }
-
-        private bool CanRegistrationPinpadExecuting(object p) => true;
-
-        private void OnRegistrationPinpadExecuted(object p)
-        {
-            TasksHandler.StartTask("cmd.exe", Pinpad.GetRegistrationCommands);
-
-            ServiceHandler.ServiceStart(Pinpad.GetPinpadServiceName);
-
-            TextBoxStatus = "Регистрация завершена.";
+            
         }
 
         #endregion
@@ -184,8 +163,6 @@ namespace F0rk.ViewModels
             #region Other commands
 
             UnregistationPinpad = new LambdaCommand(OnUnregistationPinpadExecuted, CanUnregistationPinpadExecuting);
-
-            RegistrationPinpad = new LambdaCommand(OnRegistrationPinpadExecuted, CanUnregistationPinpadExecuting);
 
             RestartSapApache = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
 
