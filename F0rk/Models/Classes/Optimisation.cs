@@ -21,6 +21,6 @@ namespace F0rk.Models.Classes
             };
         }
 
-        public static void IncreasePagefile() => TasksHandler.StartTask("wmic.exe", WmicPagefileIncreaseCommands);
+        public static void IncreasePagefile() => TasksHandler.StartTaskWithCommands("wmic.exe", WmicPagefileIncreaseCommands);
     }
 }

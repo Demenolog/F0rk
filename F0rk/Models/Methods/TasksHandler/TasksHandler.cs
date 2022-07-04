@@ -39,11 +39,11 @@ namespace F0rk.Models.Methods.TasksHandler
             }
         }
 
-        public static void StartTask(string filename, string[] commands)
+        public static void StartTaskWithCommands(string filename, string[] commands)
         {
             try
             {
-                using var process = new Process
+                var process = new Process
                 {
                     StartInfo = new ProcessStartInfo
                     {
@@ -54,7 +54,7 @@ namespace F0rk.Models.Methods.TasksHandler
                 };
                 process.Start();
 
-                using StreamWriter pWriter = process.StandardInput;
+                var pWriter = process.StandardInput;
                 if (pWriter.BaseStream.CanWrite)
                 {
                     foreach (string command in commands)

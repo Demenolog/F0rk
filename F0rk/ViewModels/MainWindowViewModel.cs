@@ -103,6 +103,7 @@ namespace F0rk.ViewModels
         private void OnIncreasePagefileCommandExecuted(object p)
         {
             Optimisation.IncreasePagefile();
+
             TextBoxStatus = "Pagefile увеличен до 3,5 Гб.";
         }
 
@@ -137,7 +138,7 @@ namespace F0rk.ViewModels
         {
             ServiceHandler.ServiceStop(Pinpad.GetPinpadServiceName);
 
-            TasksHandler.StartTask("cmd.exe", Pinpad.GetUnregistrationCommands);
+            TasksHandler.StartTaskWithCommands("cmd.exe", Pinpad.GetUnregistrationCommands);
 
             TextBoxStatus = "Разрегистрация завершена.";
         }
@@ -152,7 +153,7 @@ namespace F0rk.ViewModels
 
         private void OnRegistrationPinpadExecuted(object p)
         {
-            TasksHandler.StartTask("cmd.exe", Pinpad.GetRegistrationCommands);
+            TasksHandler.StartTaskWithCommands("cmd.exe", Pinpad.GetRegistrationCommands);
 
             ServiceHandler.ServiceStart(Pinpad.GetPinpadServiceName);
 
@@ -185,7 +186,7 @@ namespace F0rk.ViewModels
 
             UnregistationPinpad = new LambdaCommand(OnUnregistationPinpadExecuted, CanUnregistationPinpadExecuting);
 
-            RegistrationPinpad = new LambdaCommand(OnRegistrationPinpadExecuted, CanUnregistationPinpadExecuting);
+            RegistrationPinpad = new LambdaCommand(OnRegistrationPinpadExecuted, CanRegistrationPinpadExecuting);
 
             RestartSapApache = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
 
