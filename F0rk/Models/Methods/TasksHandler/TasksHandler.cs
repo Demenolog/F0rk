@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace F0rk.Models.Methods.TasksHandler
 {
@@ -48,13 +49,16 @@ namespace F0rk.Models.Methods.TasksHandler
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = filename,
+                        CreateNoWindow = true,
                         RedirectStandardInput = true,
                         UseShellExecute = false
                     }
                 };
+
                 process.Start();
 
                 var pWriter = process.StandardInput;
+
                 if (pWriter.BaseStream.CanWrite)
                 {
                     foreach (string command in commands)
@@ -62,6 +66,11 @@ namespace F0rk.Models.Methods.TasksHandler
                         pWriter.WriteLine(command);
                     }
                 }
+
+                pWriter.Close();
+
+                pWriter.Dispose();
+                process.Dispose();
             }
             catch (Exception)
             {
