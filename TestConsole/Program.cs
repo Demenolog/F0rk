@@ -27,57 +27,38 @@ namespace TestConsole
                 @"regsvr32 /s D:\Programs\UPOS\SBRFCOM.dll"
             };
 
+            var WmicPagefileIncreaseCommands = new[]
+            {
+                @"computersystem set AutomaticManagedPagefile=False /NOINTERACTIVE",
+                @"pagefileset delete /NOINTERACTIVE",
+                @"pagefileset create name=""C:\\pagefile.sys"" /NOINTERACTIVE",
+                @"pagefileset where name=""C:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE",
+                @"pagefileset create name=""D:\\pagefile.sys"" /NOINTERACTIVE",
+                @"pagefileset where name=""D:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE"
+            };
+
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "cmd.exe",
+                    FileName = "wmic.exe",
                     RedirectStandardInput = true,
                     UseShellExecute = false
                 }
             };
 
             process.Start();
-            //ServiceStop("Upos2Agent");
 
             StreamWriter pWriter = process.StandardInput;
             if (pWriter.BaseStream.CanWrite)
             {
-                foreach (string command in RegistrationCommands)
+                foreach (string command in WmicPagefileIncreaseCommands)
                 {
                     pWriter.WriteLine(command);
                 }
             }
 
-            ServiceStart("Upos2Agent");
         }
 
-        public static void ServiceStop(string service)
-        {
-            try
-            {
-                var sc = new ServiceController(service);
-                sc.Stop();
-                sc.WaitForStatus(ServiceControllerStatus.Stopped);
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
-        }
-
-        public static void ServiceStart(string service)
-        {
-            try
-            {
-                var sc = new ServiceController(service);
-                sc.Start();
-                sc.WaitForStatus(ServiceControllerStatus.Running);
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
-        }
     }
 }
