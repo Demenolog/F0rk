@@ -93,7 +93,7 @@
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding UnregistationPinpad}"
                             IsEnabled="False"
-                    >Разрегистрация пинпада
+                            >Разрегистрация пинпада
                     </Button>
                 </StackPanel>
             </TabItem>
