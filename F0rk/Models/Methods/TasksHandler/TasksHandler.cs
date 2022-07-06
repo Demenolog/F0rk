@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace F0rk.Models.Methods.TasksHandler
@@ -50,14 +52,15 @@ namespace F0rk.Models.Methods.TasksHandler
                     {
                         FileName = filename,
                         CreateNoWindow = true,
-                        RedirectStandardInput = true,
-                        UseShellExecute = false
+                        UseShellExecute = false,
+                        RedirectStandardInput = true
                     }
                 };
 
                 process.Start();
 
                 var pWriter = process.StandardInput;
+
 
                 if (pWriter.BaseStream.CanWrite)
                 {
@@ -67,14 +70,12 @@ namespace F0rk.Models.Methods.TasksHandler
                     }
                 }
 
-                pWriter.Close();
-
                 pWriter.Dispose();
                 process.Dispose();
             }
             catch (Exception)
             {
-                // ignore
+                // ignored
             }
         }
     }
