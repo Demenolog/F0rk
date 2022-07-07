@@ -1,4 +1,5 @@
-﻿using F0rk.Models.Methods.TasksHandler;
+﻿using System;
+using System.Diagnostics;
 
 namespace F0rk.Models.Classes
 {
@@ -21,6 +22,42 @@ namespace F0rk.Models.Classes
             };
         }
 
-        public static void IncreasePagefile() => TasksHandler.StartTaskWithCommands("cmd.exe", WmicPagefileIncreaseCommands);
+        public static void IncreasePagefile()
+        {
+            try
+            {
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        CreateNoWindow = true,
+                        RedirectStandardInput = true,
+                        UseShellExecute = false
+                    }
+                };
+
+                process.Start();
+
+                var pWriter = process.StandardInput;
+
+                if (pWriter.BaseStream.CanWrite)
+                {
+                    foreach (string command in WmicPagefileIncreaseCommands)
+                    {
+                        pWriter.WriteLine("/k " + command);
+                    }
+                }
+
+                pWriter.Close();
+
+                pWriter.Dispose();
+                process.Dispose();
+            }
+            catch (Exception)
+            {
+                // ignore
+            }
+        }
     }
 }
