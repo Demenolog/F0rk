@@ -21,14 +21,12 @@ namespace F0rk.Models.Classes
 
             UnregistrationCommands = new[]
             {
-                @"sc delete Upos2Agent",
                 @"regsvr32 /u /s D:\Programs\UPOS\sbrf.dll",
                 @"regsvr32 /u /s D:\Programs\UPOS\SBRFCOM.dll"
             };
 
             RegistrationCommands = new[]
             {
-                @"D:\Programs\UPOS\Agent.exe /reg",
                 @"regsvr32 /s D:\Programs\UPOS\sbrf.dll",
                 @"regsvr32 /s D:\Programs\UPOS\SBRFCOM.dll"
             };
