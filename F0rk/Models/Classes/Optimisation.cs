@@ -13,12 +13,12 @@ namespace F0rk.Models.Classes
         {
             WmicPagefileIncreaseCommands = new[]
             {
-                @"wmic computersystem set AutomaticManagedPagefile=False /NOINTERACTIVE",
-                @"wmic pagefileset delete /NOINTERACTIVE",
-                @"wmic pagefileset create name=""C:\\pagefile.sys"" /NOINTERACTIVE",
-                @"wmic pagefileset where name=""C:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE",
-                @"wmic pagefileset create name=""D:\\pagefile.sys"" /NOINTERACTIVE",
-                @"wmic pagefileset where name=""D:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE"
+                @"computersystem set AutomaticManagedPagefile=False /NOINTERACTIVE",
+                @"pagefileset delete /NOINTERACTIVE",
+                @"pagefileset create name=""C:\\pagefile.sys"" /NOINTERACTIVE",
+                @"pagefileset where name=""C:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE",
+                @"pagefileset create name=""D:\\pagefile.sys"" /NOINTERACTIVE",
+                @"pagefileset where name=""D:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE"
             };
         }
 
@@ -30,34 +30,29 @@ namespace F0rk.Models.Classes
                 {
                     StartInfo = new ProcessStartInfo
                     {
-                        FileName = "cmd.exe",
-                        CreateNoWindow = true,
+                        FileName = "wmic.exe",
+                        CreateNoWindow = false,
                         RedirectStandardInput = true,
                         UseShellExecute = false
                     }
                 };
 
                 process.Start();
-
                 var pWriter = process.StandardInput;
 
                 if (pWriter.BaseStream.CanWrite)
                 {
                     foreach (string command in WmicPagefileIncreaseCommands)
                     {
-                        pWriter.WriteLine("/k " + command);
+                        pWriter.WriteLine(command);
                     }
                 }
-
-                pWriter.Close();
-
-                pWriter.Dispose();
-                process.Dispose();
             }
             catch (Exception)
             {
                 // ignore
             }
+
         }
     }
 }
