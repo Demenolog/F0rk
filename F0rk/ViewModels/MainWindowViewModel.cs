@@ -2,12 +2,13 @@
 using F0rk.Infrastructure.Commands;
 using F0rk.Models.Classes;
 using F0rk.Models.Methods.DirectoryCleaner;
+using F0rk.Models.Methods.ServiceHandler;
 using F0rk.Models.Methods.TasksHandler;
 using F0rk.ViewModels.Base;
 using System;
+using System.Configuration.Install;
 using System.IO;
 using System.Windows.Input;
-using F0rk.Models.Methods.ServiceHandler;
 
 namespace F0rk.ViewModels
 {
@@ -138,12 +139,14 @@ namespace F0rk.ViewModels
         {
             ServiceHandler.ServiceStop(Pinpad.GetPinpadServiceName);
 
+            ManagedInstallerClass.InstallHelper(new[] { @"/u", Pinpad.GetPinpadServiceName });
+
             TasksHandler.StartTaskWithCommands("cmd.exe", Pinpad.GetUnregistrationCommands);
 
             TextBoxStatus = "Разрегистрация завершена.";
         }
 
-        #endregion
+        #endregion Unregistration pinpad command
 
         #region Registration pinpad command
 
@@ -155,14 +158,16 @@ namespace F0rk.ViewModels
         {
             TasksHandler.StartTaskWithCommands("cmd.exe", Pinpad.GetRegistrationCommands);
 
+            ManagedInstallerClass.InstallHelper(new[] { Pinpad.GetPinpadServiceName });
+
             ServiceHandler.ServiceStart(Pinpad.GetPinpadServiceName);
 
             TextBoxStatus = "Регистрация завершена.";
         }
 
-        #endregion
+        #endregion Registration pinpad command
 
-        #endregion Other setting
+        #endregion Other commands
 
         public MainWindowViewModel()
         {
@@ -190,7 +195,7 @@ namespace F0rk.ViewModels
 
             RestartSapApache = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
 
-            #endregion Other settings commands
+            #endregion Other commands
         }
     }
 }
