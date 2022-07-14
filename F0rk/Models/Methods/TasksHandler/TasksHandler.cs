@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace F0rk.Models.Methods.TasksHandler
@@ -49,8 +50,9 @@ namespace F0rk.Models.Methods.TasksHandler
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = filename,
-                        CreateNoWindow = true,
+                        CreateNoWindow = false,
                         RedirectStandardInput = true,
+                        RedirectStandardOutput = true,
                         UseShellExecute = false
                     }
                 };
@@ -67,14 +69,12 @@ namespace F0rk.Models.Methods.TasksHandler
                     }
                 }
 
-                pWriter.Close();
-
                 pWriter.Dispose();
                 process.Dispose();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                // ignore
+                MessageBox.Show(e.Message);
             }
         }
     }

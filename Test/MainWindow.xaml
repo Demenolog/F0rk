@@ -12,7 +12,7 @@
     <Grid>
         <Button Style="{DynamicResource ButtonStyle1}" 
                 Height="50"
-                Width="50">
+                Width="50" Click="Button_Click">
 
         </Button>
     </Grid>

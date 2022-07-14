@@ -8,6 +8,8 @@ using F0rk.ViewModels.Base;
 using System;
 using System.Configuration.Install;
 using System.IO;
+using System.Threading;
+using System.Windows;
 using System.Windows.Input;
 
 namespace F0rk.ViewModels
@@ -139,9 +141,7 @@ namespace F0rk.ViewModels
         {
             ServiceHandler.ServiceStop(Pinpad.GetPinpadServiceName);
 
-            ManagedInstallerClass.InstallHelper(new[] { @"/u", Pinpad.GetPinpadServiceName });
-
-            TasksHandler.StartTaskWithCommands("cmd.exe", Pinpad.GetUnregistrationCommands);
+            TasksHandler.StartTaskWithCommands("cmd", Pinpad.GetUnregistrationCommands);
 
             TextBoxStatus = "Разрегистрация завершена.";
         }
@@ -156,9 +156,9 @@ namespace F0rk.ViewModels
 
         private void OnRegistrationPinpadExecuted(object p)
         {
-            TasksHandler.StartTaskWithCommands("cmd.exe", Pinpad.GetRegistrationCommands);
+            TasksHandler.StartTaskWithCommands("cmd", Pinpad.GetRegistrationCommands);
 
-            ManagedInstallerClass.InstallHelper(new[] { Pinpad.GetPinpadServiceName });
+            Thread.Sleep(1000);
 
             ServiceHandler.ServiceStart(Pinpad.GetPinpadServiceName);
 

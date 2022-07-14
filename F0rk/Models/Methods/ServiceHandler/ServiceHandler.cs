@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceProcess;
+using System.Windows;
 
 namespace F0rk.Models.Methods.ServiceHandler
 {
@@ -15,9 +16,9 @@ namespace F0rk.Models.Methods.ServiceHandler
                     sc.Stop();
                     sc.WaitForStatus(ServiceControllerStatus.Stopped);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    // ignored
+                    MessageBox.Show(e.Message);
                 }
             }
         }
@@ -27,12 +28,15 @@ namespace F0rk.Models.Methods.ServiceHandler
             try
             {
                 ServiceController sc = new ServiceController(service);
-                sc.Stop();
-                sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                if (sc.CanStop)
+                {
+                    sc.Stop();
+                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                // ignored
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -43,12 +47,15 @@ namespace F0rk.Models.Methods.ServiceHandler
                 try
                 {
                     ServiceController sc = new ServiceController(service);
-                    sc.Start();
-                    sc.WaitForStatus(ServiceControllerStatus.Running);
+                    if (sc.CanPauseAndContinue)
+                    {
+                        sc.Start();
+                        sc.WaitForStatus(ServiceControllerStatus.Running);
+                    }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    // ignored
+                    MessageBox.Show(e.Message);
                 }
             }
         }
@@ -61,9 +68,9 @@ namespace F0rk.Models.Methods.ServiceHandler
                 sc.Start();
                 sc.WaitForStatus(ServiceControllerStatus.Running);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                // ignored
+                MessageBox.Show(e.Message);
             }
         }
 
