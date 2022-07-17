@@ -6,38 +6,16 @@ namespace F0rk.Models.Methods.ServiceHandler
 {
     public static class ServiceHandler
     {
-        public static void ServiceStop(string[] services)
+        public static void ServiceRestart(string[] services)
         {
-            foreach (string service in services)
-            {
-                try
-                {
-                    var sc = new ServiceController(service);
-                    sc.Stop();
-                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-            }
+            ServiceStop(services);
+            ServiceStart(services);
         }
 
-        public static void ServiceStop(string service)
+        public static void ServiceRestart(string service)
         {
-            try
-            {
-                var sc = new ServiceController(service);
-                if (sc.CanStop)
-                {
-                    sc.Stop();
-                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
+            ServiceStop(service);
+            ServiceStart(service);
         }
 
         public static void ServiceStart(string[] services)
@@ -65,8 +43,11 @@ namespace F0rk.Models.Methods.ServiceHandler
             try
             {
                 var sc = new ServiceController(service);
-                sc.Start();
-                sc.WaitForStatus(ServiceControllerStatus.Running);
+                if (sc.CanPauseAndContinue)
+                {
+                    sc.Start();
+                    sc.WaitForStatus(ServiceControllerStatus.Running);
+                }
             }
             catch (Exception e)
             {
@@ -74,16 +55,41 @@ namespace F0rk.Models.Methods.ServiceHandler
             }
         }
 
-        public static void ServiceRestart(string[] services)
+        public static void ServiceStop(string[] services)
         {
-            ServiceStop(services);
-            ServiceStart(services);
+            foreach (string service in services)
+            {
+                try
+                {
+                    var sc = new ServiceController(service);
+                    if (sc.CanStop)
+                    {
+                        sc.Stop();
+                        sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
         }
 
-        public static void ServiceRestart(string service)
+        public static void ServiceStop(string service)
         {
-            ServiceStop(service);
-            ServiceStart(service);
+            try
+            {
+                var sc = new ServiceController(service);
+                if (sc.CanStop)
+                {
+                    sc.Stop();
+                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }
