@@ -70,6 +70,15 @@ namespace F0rk.Models.Methods.TasksHandler
                     }
                 }
 
+                process.StandardInput.Flush();
+                process.StandardInput.Close();
+
+                //var output = process.StandardOutput.ReadToEnd();
+
+                process.WaitForExit();
+                process.Close();
+
+                //MessageBox.Show(output);
             }
             catch (Exception e)
             {
