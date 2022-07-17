@@ -105,7 +105,7 @@ namespace F0rk.ViewModels
 
         private void OnIncreasePagefileCommandExecuted(object p)
         {
-            Optimisation.IncreasePagefile();
+            TasksHandler.StartTaskWithCommands("cmd", Optimisation.GetWmicPagefileIncreaseCommands);
 
             TextBoxStatus = "Pagefile увеличен до 3,5 Гб.";
         }
