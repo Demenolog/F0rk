@@ -32,9 +32,12 @@ namespace Test
 
             string[] commands = new[]
             {
-                "sc delete Upos2Agent",
-                @"regsvr32 /u /s D:\Programs\UPOS\sbrf.dll",
-                @"regsvr32 /u /s D:\Programs\UPOS\SBRFCOM.dll"
+                @"wmic computersystem set AutomaticManagedPagefile=False /NOINTERACTIVE",
+                @"wmic pagefileset delete /NOINTERACTIVE",
+                @"wmic pagefileset create name=""C:\\pagefile.sys"" /NOINTERACTIVE",
+                @"wmic pagefileset where name=""C:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE",
+                @"wmic pagefileset create name=""D:\\pagefile.sys"" /NOINTERACTIVE",
+                @"wmic pagefileset where name=""D:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE"
             };
 
             try
@@ -45,6 +48,7 @@ namespace Test
                     {
                         FileName = filename,
                         CreateNoWindow = false,
+                        RedirectStandardOutput = true,
                         RedirectStandardInput = true,
                         UseShellExecute = false
                     }
@@ -62,8 +66,8 @@ namespace Test
                     }
                 }
 
-                pWriter.Dispose();
-                process.Dispose();
+                var output = process.StandardOutput.ReadToEnd();
+                MessageBox.Show(output);
             }
             catch (Exception exp)
             {
