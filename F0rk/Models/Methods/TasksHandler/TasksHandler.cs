@@ -50,7 +50,7 @@ namespace F0rk.Models.Methods.TasksHandler
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = filename,
-                        CreateNoWindow = false,
+                        CreateNoWindow = true,
                         RedirectStandardInput = true,
                         RedirectStandardOutput = true,
                         UseShellExecute = false
@@ -69,8 +69,6 @@ namespace F0rk.Models.Methods.TasksHandler
                     }
                 }
 
-                pWriter.Dispose();
-                process.Dispose();
             }
             catch (Exception e)
             {

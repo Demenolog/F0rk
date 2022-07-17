@@ -12,7 +12,7 @@ namespace F0rk.Models.Methods.ServiceHandler
             {
                 try
                 {
-                    ServiceController sc = new ServiceController(service);
+                    var sc = new ServiceController(service);
                     sc.Stop();
                     sc.WaitForStatus(ServiceControllerStatus.Stopped);
                 }
@@ -27,7 +27,7 @@ namespace F0rk.Models.Methods.ServiceHandler
         {
             try
             {
-                ServiceController sc = new ServiceController(service);
+                var sc = new ServiceController(service);
                 if (sc.CanStop)
                 {
                     sc.Stop();
@@ -46,7 +46,7 @@ namespace F0rk.Models.Methods.ServiceHandler
             {
                 try
                 {
-                    ServiceController sc = new ServiceController(service);
+                    var sc = new ServiceController(service);
                     if (sc.CanPauseAndContinue)
                     {
                         sc.Start();
