@@ -9,6 +9,7 @@ namespace F0rk.Classes
         private static readonly string[] PathsToClean;
         private static readonly string SapService;
         private static readonly string[] Tasks;
+
         static _1C()
         {
             PathsToClean = new[]
