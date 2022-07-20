@@ -91,8 +91,8 @@
                         <Button.ToolTip>
                             <ToolTip>
                                 <StackPanel>
-                                    <TextBlock>Регистрирует sbrf.dll и SBRFCOM.dll.</TextBlock>
-                                    <TextBlock>Регистрирует службу Upos2Agent.</TextBlock>
+                                    <TextBlock>-Регистрирует sbrf.dll и SBRFCOM.dll.</TextBlock>
+                                    <TextBlock>-Регистрирует службу Upos2Agent.</TextBlock>
                                 </StackPanel>
                             </ToolTip>
                         </Button.ToolTip>
@@ -103,9 +103,9 @@
                         <Button.ToolTip>
                             <ToolTip>
                                 <StackPanel>
-                                    <TextBlock>Разрегистрирует службу Upos2Agent.</TextBlock>
-                                    <TextBlock>Удаляет службу Upos2Agent.</TextBlock>
-                                    <TextBlock>Разрегистрирует sbrf.dll и SBRFCOM.dll.</TextBlock>
+                                    <TextBlock>-Разрегистрирует службу Upos2Agent.</TextBlock>
+                                    <TextBlock>-Удаляет службу Upos2Agent.</TextBlock>
+                                    <TextBlock>-Разрегистрирует sbrf.dll и SBRFCOM.dll.</TextBlock>
                                 </StackPanel>
                             </ToolTip>
                         </Button.ToolTip>
