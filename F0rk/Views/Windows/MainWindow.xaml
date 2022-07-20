@@ -100,6 +100,15 @@
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding UnregistationPinpad}"
                             >Разрегистрация пинпада
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Разрегистрирует службу Upos2Agent.</TextBlock>
+                                    <TextBlock>Удаляет службу Upos2Agent.</TextBlock>
+                                    <TextBlock>Разрегистрирует sbrf.dll и SBRFCOM.dll.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
                     </Button>
                 </StackPanel>
             </TabItem>
