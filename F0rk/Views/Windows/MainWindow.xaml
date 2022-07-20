@@ -89,11 +89,28 @@
                             Command="{Binding RegistrationPinpad}"
                             IsEnabled="False"
                             >Регистрация пинпада
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>-Регистрирует sbrf.dll и SBRFCOM.dll.</TextBlock>
+                                    <TextBlock>-Регистрирует службу Upos2Agent.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding UnregistationPinpad}"
                             IsEnabled="False"
                             >Разрегистрация пинпада
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>-Разрегистрирует службу Upos2Agent.</TextBlock>
+                                    <TextBlock>-Удаляет службу Upos2Agent.</TextBlock>
+                                    <TextBlock>-Разрегистрирует sbrf.dll и SBRFCOM.dll.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
                     </Button>
                 </StackPanel>
             </TabItem>
