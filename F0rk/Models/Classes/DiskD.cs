@@ -5,15 +5,10 @@ namespace F0rk.Classes
     internal static class DiskD
     {
         private static readonly string[] EmailTasksNames;
-
         private static readonly string[] PathsesToCompleteClean;
-
         private static readonly string[] PathsToSubfoldersClean;
-
         private static readonly string PathToEmails;
-
         private static readonly string[] Services;
-
         private static readonly string[] Tasks;
 
         static DiskD()
