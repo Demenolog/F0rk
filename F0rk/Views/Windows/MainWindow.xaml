@@ -88,6 +88,14 @@
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding RegistrationPinpad}"
                             >Регистрация пинпада
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Регистрирует sbrf.dll и SBRFCOM.dll.</TextBlock>
+                                    <TextBlock>Регистрирует службу Upos2Agent.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding UnregistationPinpad}"
