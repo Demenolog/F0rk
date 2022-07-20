@@ -30,7 +30,6 @@ namespace F0rk.Classes
             ApacheService = new[]
             {
                 "apache2.4",
-                "apache2.2"
             };
 
             SapService = "SAPAdapterEngine";
