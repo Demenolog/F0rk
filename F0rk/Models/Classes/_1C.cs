@@ -6,9 +6,7 @@ namespace F0rk.Classes
     public static class _1C
     {
         private static readonly string[] ApacheService;
-
         private static readonly string[] PathsToClean;
-
         private static readonly string SapService;
         private static readonly string[] Tasks;
         static _1C()
