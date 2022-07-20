@@ -64,7 +64,6 @@ namespace F0rk.Classes
             string[] servicesToRestart = new[]
             {
                 ApacheService[0],
-                ApacheService[1],
                 SapService
             };
 
