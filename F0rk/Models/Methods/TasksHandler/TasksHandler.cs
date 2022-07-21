@@ -52,8 +52,9 @@ namespace F0rk.Models.Methods.TasksHandler
                     {
                         FileName = filename,
                         CreateNoWindow = true,
-                        UseShellExecute = false,
-                        RedirectStandardInput = true
+                        RedirectStandardInput = true,
+                        RedirectStandardOutput = true,
+                        UseShellExecute = false
                     }
                 };
 
@@ -70,12 +71,19 @@ namespace F0rk.Models.Methods.TasksHandler
                     }
                 }
 
-                pWriter.Dispose();
-                process.Dispose();
+                process.StandardInput.Flush();
+                process.StandardInput.Close();
+
+                //var output = process.StandardOutput.ReadToEnd();
+
+                process.WaitForExit();
+                process.Close();
+
+                //MessageBox.Show(output);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                // ignored
+                MessageBox.Show(e.Message);
             }
         }
     }

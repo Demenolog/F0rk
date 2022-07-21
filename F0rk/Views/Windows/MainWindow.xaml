@@ -87,7 +87,6 @@
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding RegistrationPinpad}"
-                            IsEnabled="False"
                             >Регистрация пинпада
                         <Button.ToolTip>
                             <ToolTip>
@@ -100,7 +99,6 @@
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding UnregistationPinpad}"
-                            IsEnabled="False"
                             >Разрегистрация пинпада
                         <Button.ToolTip>
                             <ToolTip>

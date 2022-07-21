@@ -2,12 +2,15 @@
 using F0rk.Infrastructure.Commands;
 using F0rk.Models.Classes;
 using F0rk.Models.Methods.DirectoryCleaner;
+using F0rk.Models.Methods.ServiceHandler;
 using F0rk.Models.Methods.TasksHandler;
 using F0rk.ViewModels.Base;
 using System;
+using System.Configuration.Install;
 using System.IO;
+using System.Threading;
+using System.Windows;
 using System.Windows.Input;
-using F0rk.Models.Methods.ServiceHandler;
 
 namespace F0rk.ViewModels
 {
@@ -102,7 +105,7 @@ namespace F0rk.ViewModels
 
         private void OnIncreasePagefileCommandExecuted(object p)
         {
-            Optimisation.IncreasePagefile();
+            TasksHandler.StartTaskWithCommands("cmd", Optimisation.GetWmicPagefileIncreaseCommands);
 
             TextBoxStatus = "Pagefile увеличен до 3,5 Гб.";
         }
@@ -138,12 +141,12 @@ namespace F0rk.ViewModels
         {
             ServiceHandler.ServiceStop(Pinpad.GetPinpadServiceName);
 
-            TasksHandler.StartTaskWithCommands("cmd.exe", Pinpad.GetUnregistrationCommands);
+            TasksHandler.StartTaskWithCommands("cmd", Pinpad.GetUnregistrationCommands);
 
             TextBoxStatus = "Разрегистрация завершена.";
         }
 
-        #endregion
+        #endregion Unregistration pinpad command
 
         #region Registration pinpad command
 
@@ -153,16 +156,18 @@ namespace F0rk.ViewModels
 
         private void OnRegistrationPinpadExecuted(object p)
         {
-            TasksHandler.StartTaskWithCommands("cmd.exe", Pinpad.GetRegistrationCommands);
+            TasksHandler.StartTaskWithCommands("cmd", Pinpad.GetRegistrationCommands);
+
+            Thread.Sleep(1000);
 
             ServiceHandler.ServiceStart(Pinpad.GetPinpadServiceName);
 
             TextBoxStatus = "Регистрация завершена.";
         }
 
-        #endregion
+        #endregion Registration pinpad command
 
-        #endregion Other setting
+        #endregion Other commands
 
         public MainWindowViewModel()
         {
@@ -190,7 +195,7 @@ namespace F0rk.ViewModels
 
             RestartSapApache = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
 
-            #endregion Other settings commands
+            #endregion Other commands
         }
     }
 }

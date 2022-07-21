@@ -6,11 +6,10 @@ namespace F0rk.Classes
     public static class _1C
     {
         private static readonly string[] ApacheService;
-
         private static readonly string[] PathsToClean;
-
         private static readonly string SapService;
         private static readonly string[] Tasks;
+
         static _1C()
         {
             PathsToClean = new[]
@@ -30,7 +29,6 @@ namespace F0rk.Classes
             ApacheService = new[]
             {
                 "apache2.4",
-                "apache2.2"
             };
 
             SapService = "SAPAdapterEngine";
@@ -65,7 +63,6 @@ namespace F0rk.Classes
             string[] servicesToRestart = new[]
             {
                 ApacheService[0],
-                ApacheService[1],
                 SapService
             };
 

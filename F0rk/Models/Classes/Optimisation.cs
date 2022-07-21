@@ -1,12 +1,11 @@
-﻿using F0rk.Models.Methods.TasksHandler;
+﻿using System;
+using System.Diagnostics;
 
 namespace F0rk.Models.Classes
 {
     public static class Optimisation
     {
         private static readonly string[] WmicPagefileIncreaseCommands;
-        private static readonly string[] CmdPinpadRegistration;
-        private static readonly string[] CmdPinpadUnregistration;
 
         static Optimisation()
         {
@@ -21,6 +20,6 @@ namespace F0rk.Models.Classes
             };
         }
 
-        public static void IncreasePagefile() => TasksHandler.StartTaskWithCommands("wmic.exe", WmicPagefileIncreaseCommands);
+        public static string[] GetWmicPagefileIncreaseCommands => WmicPagefileIncreaseCommands;
     }
 }
