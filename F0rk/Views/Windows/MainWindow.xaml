@@ -77,6 +77,18 @@
                             </ToolTip>
                         </Button.ToolTip>
                     </Button>
+                    <Button
+                        Style="{StaticResource ClearingButton}"
+                        IsEnabled="False"
+                        >Синхронизация времени
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock></TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Разное">
