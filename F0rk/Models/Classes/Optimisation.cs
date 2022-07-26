@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.IO;
 
 namespace F0rk.Models.Classes
 {
@@ -7,7 +6,6 @@ namespace F0rk.Models.Classes
     {
         private static readonly string[] WmicPagefileIncreaseCommands;
         private static readonly string[] TimeSynchronization;
-        
 
         static Optimisation()
         {
@@ -27,10 +25,28 @@ namespace F0rk.Models.Classes
                 @"sc config W32Time start=auto",
                 @"W32tm.exe /resync"
             };
-
         }
 
         public static string[] GetWmicPagefileIncreaseCommands => WmicPagefileIncreaseCommands;
         public static string[] GetTimeSynchronization => TimeSynchronization;
+
+        public static void CreateTaskForTaskScheduler()
+        {
+            string path = @"";
+            Directory.CreateDirectory(path);
+
+            FileInfo fi = new FileInfo(path + "\\TimeSynchronization.bat");
+            using (StreamWriter sw = fi.CreateText())
+            {
+                foreach (string command in TimeSynchronization)
+                {
+                    sw.WriteLine(command);
+                }
+            }
+
+            fi.Create();
+
+
+        }
     }
 }
