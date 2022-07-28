@@ -4,8 +4,9 @@ namespace F0rk.Models.Classes
 {
     public static class Optimisation
     {
+        private static readonly string[] TimeSynchronizationBatchText;
+        private static readonly string TimeSynchronizationCommandForCmd;
         private static readonly string[] WmicPagefileIncreaseCommands;
-        private static readonly string[] TimeSynchronization;
 
         static Optimisation()
         {
@@ -19,34 +20,35 @@ namespace F0rk.Models.Classes
                 @"wmic pagefileset where name=""D:\\\\pagefile.sys"" set InitialSize=3546,MaximumSize=3546 /NOINTERACTIVE"
             };
 
-            TimeSynchronization = new[]
+            TimeSynchronizationBatchText = new[]
             {
                 @"sc start W32Time",
                 @"sc config W32Time start=auto",
                 @"W32tm.exe /resync"
             };
+
+            TimeSynchronizationCommandForCmd = @"SCHTASKS /Create /SC ONSTART /TN TimeSynchronization /TR C:\Windows\Svyaznoy\TimeSynchronization\TimeSynchronization.bat";
         }
 
+        public static string[] GetTimeSynchronizationBatchText => TimeSynchronizationBatchText;
+        public static string GetTimeSynchronizationCommandForCmd => TimeSynchronizationCommandForCmd;
         public static string[] GetWmicPagefileIncreaseCommands => WmicPagefileIncreaseCommands;
-        public static string[] GetTimeSynchronization => TimeSynchronization;
 
         public static void CreateTaskForTaskScheduler()
         {
             string path = @"";
             Directory.CreateDirectory(path);
 
-            FileInfo fi = new FileInfo(path + "\\TimeSynchronization.bat");
+            FileInfo fi = new FileInfo(path + "\\TimeSynchronizationBatchText.bat");
             using (StreamWriter sw = fi.CreateText())
             {
-                foreach (string command in TimeSynchronization)
+                foreach (string command in TimeSynchronizationBatchText)
                 {
                     sw.WriteLine(command);
                 }
             }
 
             fi.Create();
-
-
         }
     }
 }
