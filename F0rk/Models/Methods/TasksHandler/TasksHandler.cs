@@ -70,7 +70,6 @@ namespace F0rk.Models.Methods.TasksHandler
                     }
                 }
 
-                process.StandardInput.Flush();
                 process.StandardInput.Close();
 
                 //var output = process.StandardOutput.ReadToEnd();
@@ -85,5 +84,43 @@ namespace F0rk.Models.Methods.TasksHandler
                 MessageBox.Show(e.Message);
             }
         }
+
+        public static void StartTaskWithCommand(string filename, string command)
+        {
+            try
+            {
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = filename,
+                        CreateNoWindow = true,
+                        RedirectStandardInput = true,
+                        RedirectStandardOutput = true,
+                        UseShellExecute = false
+                    }
+                };
+
+                process.Start();
+
+                var pWriter = process.StandardInput;
+
+                pWriter.WriteLine(command);
+
+                process.StandardInput.Close();
+
+                //var output = process.StandardOutput.ReadToEnd();
+
+                process.WaitForExit();
+                process.Close();
+
+                //MessageBox.Show(output);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
     }
 }
