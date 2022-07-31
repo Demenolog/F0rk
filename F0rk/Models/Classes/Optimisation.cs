@@ -1,9 +1,11 @@
 ﻿using System.IO;
+using F0rk.Models.Methods.TasksHandler;
 
 namespace F0rk.Models.Classes
 {
     public static class Optimisation
     {
+        private static readonly string PathToTimeSynchronizationDirectory;
         private static readonly string[] TimeSynchronizationBatchText;
         private static readonly string TimeSynchronizationCommandForCmd;
         private static readonly string[] WmicPagefileIncreaseCommands;
@@ -27,19 +29,20 @@ namespace F0rk.Models.Classes
                 @"W32tm.exe /resync"
             };
 
-            TimeSynchronizationCommandForCmd = @"SCHTASKS /Create /SC ONSTART /TN TimeSynchronization /TR C:\Windows\Svyaznoy\TimeSynchronization\TimeSynchronization.bat";
+            TimeSynchronizationCommandForCmd = @"SCHTASKS /Create /SC ONSTART /TN TimeSynchronization /TR " +
+                                               @"C:\Windows\Svyaznoy\TimeSynchronization\TimeSynchronization.bat";
+
+            PathToTimeSynchronizationDirectory = @"C:\Windows\Svyaznoy\TimeSynchronization";
         }
 
-        public static string[] GetTimeSynchronizationBatchText => TimeSynchronizationBatchText;
-        public static string GetTimeSynchronizationCommandForCmd => TimeSynchronizationCommandForCmd;
         public static string[] GetWmicPagefileIncreaseCommands => WmicPagefileIncreaseCommands;
 
-        public static void CreateTaskForTaskScheduler()
+        public static void TimeSynchronization()
         {
-            string path = @"";
-            Directory.CreateDirectory(path);
+            Directory.CreateDirectory(PathToTimeSynchronizationDirectory);
 
-            FileInfo fi = new FileInfo(path + "\\TimeSynchronizationBatchText.bat");
+            FileInfo fi = new FileInfo(PathToTimeSynchronizationDirectory + "\\TimeSynchronizationBatchText.bat");
+
             using (StreamWriter sw = fi.CreateText())
             {
                 foreach (string command in TimeSynchronizationBatchText)
@@ -48,7 +51,9 @@ namespace F0rk.Models.Classes
                 }
             }
 
-            fi.Create();
+            TasksHandler.StartTaskWithCommand("cmd",TimeSynchronizationBatchText);
+
+            TasksHandler.StartTaskWithCommand("cmd", TimeSynchronizationCommandForCmd);
         }
     }
 }
