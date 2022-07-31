@@ -112,6 +112,21 @@ namespace F0rk.ViewModels
 
         #endregion Increase pagefile command
 
+        #region Time synchronization
+
+        public ICommand TimeSynchronizationCommand { get; }
+
+        private bool CanTimeSynchronizationExecuting(object p) => true;
+
+        private void OnTimeSynchronizationExecuted(object p)
+        {
+            Optimisation.TimeSynchronization();
+
+            TextBoxStatus = "Время синхронизировано.";
+        }
+
+        #endregion
+
         #endregion Optimisation commands
 
         #region Other commands
@@ -184,6 +199,9 @@ namespace F0rk.ViewModels
             #region Optimisation commands
 
             IncreasePagefileCommand = new LambdaCommand(OnIncreasePagefileCommandExecuted, CanIncreasePagefileCommandExecuting);
+
+            TimeSynchronizationCommand =
+                new LambdaCommand(OnTimeSynchronizationExecuted, CanTimeSynchronizationExecuting);
 
             #endregion Optimisation commands
 
