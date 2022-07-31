@@ -79,12 +79,13 @@
                     </Button>
                     <Button
                         Style="{StaticResource ClearingButton}"
-                        IsEnabled="False"
+                        Command="{Binding TimeSynchronizationCommand}"
                         >Синхронизация времени
                         <Button.ToolTip>
                             <ToolTip>
                                 <StackPanel>
-                                    <TextBlock></TextBlock>
+                                    <TextBlock>-Синхронизирует время.</TextBlock>
+                                    <TextBlock>-Добавляет задачу в пл. задач.</TextBlock>
                                 </StackPanel>
                             </ToolTip>
                         </Button.ToolTip>
