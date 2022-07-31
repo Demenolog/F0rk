@@ -51,9 +51,9 @@ namespace F0rk.Models.Classes
                 }
             }
 
-            TasksHandler.StartTaskWithCommand("cmd",TimeSynchronizationBatchText);
+            TasksHandler.StartTaskWithCommands("cmd",TimeSynchronizationBatchText);
 
-            TasksHandler.StartTaskWithCommand("cmd", TimeSynchronizationCommandForCmd);
+            TasksHandler.StartTaskWithCommands("cmd", TimeSynchronizationCommandForCmd);
         }
     }
 }

@@ -105,7 +105,7 @@ namespace F0rk.ViewModels
 
         private void OnIncreasePagefileCommandExecuted(object p)
         {
-            TasksHandler.StartTaskWithCommand("cmd", Optimisation.GetWmicPagefileIncreaseCommands);
+            TasksHandler.StartTaskWithCommands("cmd", Optimisation.GetWmicPagefileIncreaseCommands);
 
             TextBoxStatus = "Pagefile увеличен до 3,5 Гб.";
         }
@@ -156,7 +156,7 @@ namespace F0rk.ViewModels
         {
             ServiceHandler.ServiceStop(Pinpad.GetPinpadServiceName);
 
-            TasksHandler.StartTaskWithCommand("cmd", Pinpad.GetUnregistrationCommands);
+            TasksHandler.StartTaskWithCommands("cmd", Pinpad.GetUnregistrationCommands);
 
             TextBoxStatus = "Разрегистрация завершена.";
         }
@@ -171,7 +171,7 @@ namespace F0rk.ViewModels
 
         private void OnRegistrationPinpadExecuted(object p)
         {
-            TasksHandler.StartTaskWithCommand("cmd", Pinpad.GetRegistrationCommands);
+            TasksHandler.StartTaskWithCommands("cmd", Pinpad.GetRegistrationCommands);
 
             Thread.Sleep(1000);
 

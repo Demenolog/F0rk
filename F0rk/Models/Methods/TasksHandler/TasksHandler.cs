@@ -42,7 +42,7 @@ namespace F0rk.Models.Methods.TasksHandler
             }
         }
 
-        public static void StartTaskWithCommand(string filename, string[] commands)
+        public static void StartTaskWithCommands(string filename, string[] commands)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace F0rk.Models.Methods.TasksHandler
             }
         }
 
-        public static void StartTaskWithCommand(string filename, string command)
+        public static void StartTaskWithCommands(string filename, string command)
         {
             try
             {
