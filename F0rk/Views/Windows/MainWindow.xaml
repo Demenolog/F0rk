@@ -56,7 +56,7 @@
                                 <StackPanel>
                                     <TextBlock>-Убивает процессы winmail.</TextBlock>
                                     <TextBlock>-Удаляет все письма старше 30 дней.</TextBlock>
-                                    <TextBlock>-Папка Junk E-mail очищается полностью.</TextBlock>
+                                    <TextBlock>-Папки с мусором очищаются полностью.</TextBlock>
                                 </StackPanel>
                             </ToolTip>
                         </Button.ToolTip>
