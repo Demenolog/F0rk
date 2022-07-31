@@ -95,11 +95,11 @@
             <TabItem Header="Разное">
                 <StackPanel>
                     <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding RestartSapApache}"
+                            Command="{Binding RestartSapApacheCommand}"
                             >Перезапуск Sap\Apache
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding RegistrationPinpad}"
+                            Command="{Binding RegistrationPinpadCommand}"
                             >Регистрация пинпада
                         <Button.ToolTip>
                             <ToolTip>
@@ -111,7 +111,7 @@
                         </Button.ToolTip>
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding UnregistationPinpad}"
+                            Command="{Binding UnregistationPinpadCommand}"
                             >Разрегистрация пинпада
                         <Button.ToolTip>
                             <ToolTip>

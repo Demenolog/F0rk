@@ -133,7 +133,7 @@ namespace F0rk.ViewModels
 
         #region Restart Sap\Apache command
 
-        public ICommand RestartSapApache { get; }
+        public ICommand RestartSapApacheCommand { get; }
 
         private bool CanRestartSapApacheCommandExecuting(object p) => true;
 
@@ -148,7 +148,7 @@ namespace F0rk.ViewModels
 
         #region Unregistration pinpad command
 
-        public ICommand UnregistationPinpad { get; }
+        public ICommand UnregistationPinpadCommand { get; }
 
         private bool CanUnregistationPinpadExecuting(object p) => true;
 
@@ -165,7 +165,7 @@ namespace F0rk.ViewModels
 
         #region Registration pinpad command
 
-        public ICommand RegistrationPinpad { get; }
+        public ICommand RegistrationPinpadCommand { get; }
 
         private bool CanRegistrationPinpadExecuting(object p) => true;
 
@@ -207,11 +207,11 @@ namespace F0rk.ViewModels
 
             #region Other commands
 
-            UnregistationPinpad = new LambdaCommand(OnUnregistationPinpadExecuted, CanUnregistationPinpadExecuting);
+            UnregistationPinpadCommand = new LambdaCommand(OnUnregistationPinpadExecuted, CanUnregistationPinpadExecuting);
 
-            RegistrationPinpad = new LambdaCommand(OnRegistrationPinpadExecuted, CanRegistrationPinpadExecuting);
+            RegistrationPinpadCommand = new LambdaCommand(OnRegistrationPinpadExecuted, CanRegistrationPinpadExecuting);
 
-            RestartSapApache = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
+            RestartSapApacheCommand = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
 
             #endregion Other commands
         }
