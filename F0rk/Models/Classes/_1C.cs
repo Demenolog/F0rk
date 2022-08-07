@@ -46,17 +46,7 @@ namespace F0rk.Classes
 
         public static string[] GetPathsToClear() => PathsToClean;
 
-        public static Process[][] GetTasksToKill()
-        {
-            var processes = new Process[Tasks.Length][];
-
-            for (int i = 0; i < Tasks.Length; i++)
-            {
-                processes[i] = Process.GetProcessesByName(Tasks[i]);
-            }
-
-            return processes;
-        }
+        public static string[] GetTasksToKill() => Tasks;
 
         public static void SapApacheRestart()
         {
