@@ -9,11 +9,18 @@ namespace F0rk.Models.Methods.TasksHandler
 {
     public static class TasksHandler
     {
-        public static void KillTasks(Process[][] appsProcesses)
+        public static void KillTasks(string[] tasks)
         {
+            var processes = new Process[tasks.Length][];
+
+            for (int i = 0; i < tasks.Length; i++)
+            {
+                processes[i] = Process.GetProcesses(tasks[i]);
+            }
+
             try
             {
-                foreach (Process[] app in appsProcesses)
+                foreach (Process[] app in processes)
                 {
                     foreach (Process process in app)
                     {
@@ -27,11 +34,13 @@ namespace F0rk.Models.Methods.TasksHandler
             }
         }
 
-        public static void KillTasks(Process[] appsProcesses)
+        public static void KillTasks(string task)
         {
+            var process = Process.GetProcessesByName(task);
+
             try
             {
-                foreach (Process app in appsProcesses)
+                foreach (Process app in process)
                 {
                     app.Kill();
                 }
