@@ -41,7 +41,7 @@ namespace F0rk.Models.Classes
         {
             Directory.CreateDirectory(PathToTimeSynchronizationDirectory);
 
-            FileInfo fi = new FileInfo(PathToTimeSynchronizationDirectory + "\\TimeSynchronizationBatchText.bat");
+            FileInfo fi = new FileInfo(PathToTimeSynchronizationDirectory + "\\TimeSynchronization.bat");
 
             using (StreamWriter sw = fi.CreateText())
             {
