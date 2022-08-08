@@ -41,8 +41,7 @@ namespace F0rk.Classes
             Services = new[]
             {
                 "bits",
-                "wuauserv",
-                "CryptSvc"
+                "wuauserv"
             };
 
             Tasks = new[]
