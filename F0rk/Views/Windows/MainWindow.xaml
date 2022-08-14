@@ -97,6 +97,13 @@
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding RestartSapApacheCommand}"
                             >Перезапуск Sap\Apache
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>-Взламывает пентагон ( ͡° ͜ʖ ͡°)</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding RegistrationPinpadCommand}"
