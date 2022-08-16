@@ -135,7 +135,9 @@ namespace F0rk.ViewModels
 
         private void OnLanguageBarExecuted(object p)
         {
-            
+            Optimisation.ReturnLanguageBar();
+
+            TextBoxStatus = "Яз. панель восстановлена.";
         }
 
         #endregion

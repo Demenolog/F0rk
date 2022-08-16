@@ -92,12 +92,12 @@
                     </Button>
                     <Button
                         Style="{StaticResource ClearingButton}"
-                        IsEnabled="False"
+                        Command="{Binding LanguageBarCommand}"
                     >Восстановление яз.панели
                         <Button.ToolTip>
                             <ToolTip>
                                 <StackPanel>
-                                    <TextBlock></TextBlock>
+                                    <TextBlock>-Добавляет задачу в пл. задач.</TextBlock>
                                 </StackPanel>
                             </ToolTip>
                         </Button.ToolTip>
