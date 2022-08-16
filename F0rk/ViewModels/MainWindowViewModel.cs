@@ -127,6 +127,19 @@ namespace F0rk.ViewModels
 
         #endregion
 
+        #region ReturnLanguageBar
+
+        public ICommand LanguageBarCommand { get; }
+
+        private bool CanLanguageBarExecuting(object p) => true;
+
+        private void OnLanguageBarExecuted(object p)
+        {
+            
+        }
+
+        #endregion
+
         #endregion Optimisation commands
 
         #region Other commands
@@ -202,6 +215,9 @@ namespace F0rk.ViewModels
 
             TimeSynchronizationCommand =
                 new LambdaCommand(OnTimeSynchronizationExecuted, CanTimeSynchronizationExecuting);
+
+            LanguageBarCommand =
+                new LambdaCommand(OnLanguageBarExecuted, CanLanguageBarExecuting);
 
             #endregion Optimisation commands
 

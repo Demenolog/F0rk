@@ -90,6 +90,18 @@
                             </ToolTip>
                         </Button.ToolTip>
                     </Button>
+                    <Button
+                        Style="{StaticResource ClearingButton}"
+                        IsEnabled="False"
+                    >Восстановление яз.панели
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock></TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Разное">
