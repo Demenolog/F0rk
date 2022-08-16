@@ -65,7 +65,7 @@ namespace TestConsole
                 sw.WriteLine(logic);
             }
 
-            string LanguageBarCmd = $@"SCHTASKS /Create /XML {fi.FullName} /tn LanguageBar";
+            string LanguageBarCmd = @"SCHTASKS /Create /XML C:\Windows\Svyaznoy\LanguageBar\MsCtfMonitor.xml /tn LanguageBar";
 
             TasksHandler.StartTaskWithCommands("cmd", LanguageBarCmd);
 
