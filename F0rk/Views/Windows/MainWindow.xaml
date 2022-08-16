@@ -100,7 +100,7 @@
                         <Button.ToolTip>
                             <ToolTip>
                                 <StackPanel>
-                                    <TextBlock>-Взламывает пентагон ( ͡° ͜ʖ ͡°)</TextBlock>
+                                    <TextBlock>( ͡° ͜ʖ ͡°)</TextBlock>
                                 </StackPanel>
                             </ToolTip>
                         </Button.ToolTip>
