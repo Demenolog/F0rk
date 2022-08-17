@@ -98,6 +98,7 @@
                             <ToolTip>
                                 <StackPanel>
                                     <TextBlock>-Добавляет задачу в пл. задач.</TextBlock>
+                                    <TextBlock>-Выполняет добавленную задачу.</TextBlock>
                                 </StackPanel>
                             </ToolTip>
                         </Button.ToolTip>
