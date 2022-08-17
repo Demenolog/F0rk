@@ -65,6 +65,8 @@ namespace TestConsole
                 sw.WriteLine(logic);
             }
 
+            //TODO Add command for runing tasks.
+
             string LanguageBarCmd = @"SCHTASKS /Create /XML C:\Windows\Svyaznoy\LanguageBar\MsCtfMonitor.xml /tn LanguageBar";
 
             TasksHandler.StartTaskWithCommands("cmd", LanguageBarCmd);
