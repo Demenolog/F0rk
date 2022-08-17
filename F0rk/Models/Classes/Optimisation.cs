@@ -5,7 +5,7 @@ namespace F0rk.Models.Classes
 {
     public static class Optimisation
     {
-        private static readonly string LanguageBarCommandForCmd;
+        private static readonly string[] LanguageBarCommandsForCmd;
         private static readonly string PathToLanguageBarDirectory;
         private static readonly string PathToTimeSynchronizationDirectory;
         private static readonly string[] TimeSynchronizationBatchText;
@@ -36,7 +36,11 @@ namespace F0rk.Models.Classes
 
             PathToTimeSynchronizationDirectory = @"C:\Windows\Svyaznoy\TimeSynchronization";
 
-            LanguageBarCommandForCmd = @"SCHTASKS /Create /XML C:\Windows\Svyaznoy\LanguageBar\MsCtfMonitor.xml /tn LanguageBar";
+            LanguageBarCommandsForCmd = new []
+            {
+                @"SCHTASKS /Create /XML C:\Windows\Svyaznoy\LanguageBar\MsCtfMonitor.xml /tn LanguageBar",
+                @"SCHTASKS /run /tn LanguageBar"
+            };
 
             PathToLanguageBarDirectory = @"C:\Windows\Svyaznoy\LanguageBar";
         }
@@ -99,7 +103,7 @@ namespace F0rk.Models.Classes
 </Task>");
             }
 
-            TasksHandler.StartTaskWithCommands("cmd", LanguageBarCommandForCmd);
+            TasksHandler.StartTaskWithCommands("cmd", LanguageBarCommandsForCmd);
         }
 
         public static void TimeSynchronization()
