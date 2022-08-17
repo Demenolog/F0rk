@@ -1,5 +1,5 @@
-﻿using System.IO;
-using F0rk.Models.Methods.TasksHandler;
+﻿using F0rk.Models.Methods.TasksHandler;
+using System.IO;
 
 namespace F0rk.Models.Classes
 {
@@ -36,7 +36,7 @@ namespace F0rk.Models.Classes
 
             PathToTimeSynchronizationDirectory = @"C:\Windows\Svyaznoy\TimeSynchronization";
 
-            LanguageBarCommandsForCmd = new []
+            LanguageBarCommandsForCmd = new[]
             {
                 @"SCHTASKS /Create /XML C:\Windows\Svyaznoy\LanguageBar\MsCtfMonitor.xml /tn LanguageBar",
                 @"SCHTASKS /run /tn LanguageBar"
@@ -120,7 +120,7 @@ namespace F0rk.Models.Classes
                 }
             }
 
-            TasksHandler.StartTaskWithCommands("cmd",TimeSynchronizationBatchText);
+            TasksHandler.StartTaskWithCommands("cmd", TimeSynchronizationBatchText);
 
             TasksHandler.StartTaskWithCommands("cmd", TimeSynchronizationCommandForCmd);
         }
