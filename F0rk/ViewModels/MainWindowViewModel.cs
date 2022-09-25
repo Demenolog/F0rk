@@ -44,8 +44,6 @@ namespace F0rk.ViewModels
 
             DirectoryCleaner.CleanUpComplete(_1C.GetPathsToClear());
 
-            _1C.ApacheStart();
-
             TextBoxStatus = "Чистка кэша 1С завершена.";
         }
 
