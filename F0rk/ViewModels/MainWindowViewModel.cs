@@ -78,7 +78,7 @@ namespace F0rk.ViewModels
 
         private void OnClearMailCommandExecuted(object p)
         {
-            TasksHandler.KillTasks(DiskD.GetTasksToKill);
+            TasksHandler.KillTasks("wlmail");
 
             var directory = new DirectoryInfo(DiskD.GetPathToEmails);
 
