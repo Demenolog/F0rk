@@ -112,7 +112,8 @@ namespace F0rk.Models.Methods.DirectoryCleaner
 
             foreach (DirectoryInfo folder in directory.GetDirectories())
             {
-                if (!folder.FullName.ToUpperInvariant().Contains("Espoint".ToUpperInvariant())) continue;
+                if (!folder.FullName.ToUpperInvariant().Contains("Espoint".ToUpperInvariant()) ||
+                    !folder.FullName.ToUpperInvariant().Contains("SVZ".ToUpperInvariant())) continue;
 
                 foreach (DirectoryInfo subFolder in folder.GetDirectories())
                 {

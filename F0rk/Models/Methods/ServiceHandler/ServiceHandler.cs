@@ -28,7 +28,7 @@ namespace F0rk.Models.Methods.ServiceHandler
                     if (sc.CanPauseAndContinue)
                     {
                         sc.Start();
-                        sc.WaitForStatus(ServiceControllerStatus.Running);
+                        sc.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(5));
                     }
                 }
                 catch (Exception e)
@@ -46,7 +46,7 @@ namespace F0rk.Models.Methods.ServiceHandler
                 if (sc.CanPauseAndContinue)
                 {
                     sc.Start();
-                    sc.WaitForStatus(ServiceControllerStatus.Running);
+                    sc.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(5));
                 }
             }
             catch (Exception e)
@@ -65,7 +65,7 @@ namespace F0rk.Models.Methods.ServiceHandler
                     if (sc.CanStop)
                     {
                         sc.Stop();
-                        sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                        sc.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(5));
                     }
                 }
                 catch (Exception e)
@@ -83,7 +83,7 @@ namespace F0rk.Models.Methods.ServiceHandler
                 if (sc.CanStop)
                 {
                     sc.Stop();
-                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                    sc.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(5));
                 }
             }
             catch (Exception e)

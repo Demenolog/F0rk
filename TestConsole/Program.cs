@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
-using System.ServiceProcess;
+using System.Windows;
+using F0rk.Models.Methods.TasksHandler;
 
 namespace TestConsole
 {
@@ -9,8 +9,12 @@ namespace TestConsole
     {
         private static void Main(string[] args)
         {
+            foreach (string str in args)
+            {
+                Console.WriteLine(str);
+            }
 
+            Console.ReadKey();
         }
-
     }
 }

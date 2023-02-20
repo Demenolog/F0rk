@@ -41,8 +41,7 @@ namespace F0rk.Classes
             Services = new[]
             {
                 "bits",
-                "wuauserv",
-                "CryptSvc"
+                "wuauserv"
             };
 
             Tasks = new[]
@@ -59,7 +58,7 @@ namespace F0rk.Classes
             };
         }
 
-        public static string[] GetCommonTasksNames => Tasks;
+        public static string[] GetTasksToKill => Tasks;
 
         public static string[] GetEmailTasksNames => EmailTasksNames;
 
@@ -71,16 +70,5 @@ namespace F0rk.Classes
 
         public static string[] GetServicesToStop => Services;
 
-        public static Process[][] GetTasksToKill(string[] tasks)
-        {
-            var processes = new Process[tasks.Length][];
-
-            for (int i = 0; i < tasks.Length; i++)
-            {
-                processes[i] = Process.GetProcessesByName(tasks[i]);
-            }
-
-            return processes;
-        }
     }
 }
