@@ -13,6 +13,8 @@ namespace TestConsole
             {
                 Console.WriteLine(str);
             }
+
+            Console.ReadKey();
         }
     }
 }
