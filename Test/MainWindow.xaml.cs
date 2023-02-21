@@ -15,7 +15,7 @@ namespace Test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var parameters = Environment.GetCommandLineArgs();
+           var parameters = Environment.GetCommandLineArgs();
 
             foreach (string str in parameters)
             {
