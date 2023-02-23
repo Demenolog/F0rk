@@ -15,5 +15,11 @@
                  Height="20"
                  Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}">
         </TextBox>
+        <Button Width="100"
+                Height="20"
+                VerticalAlignment="Top"
+                Command="{Binding CloseApplicationCommand}">
+
+        </Button>
     </Grid>
 </Window>
