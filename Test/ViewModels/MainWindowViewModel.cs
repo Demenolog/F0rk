@@ -1,18 +1,15 @@
-﻿using System;
-using System.Configuration;
-using System.Threading;
-using System.Windows;
-using System.Windows.Input;
-using Test.ViewModels.Base;
+﻿using TestWpf.ViewModels.Base;
 
-namespace F0rk.ViewModels
+namespace TestWpf.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-        
-        public MainWindowViewModel()
+        private string _Title;
+
+        public string Title
         {
-            
+            get => _Title;
+            set => Set(ref _Title, value);
         }
     }
 }
