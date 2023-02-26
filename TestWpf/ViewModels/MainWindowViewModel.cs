@@ -1,5 +1,4 @@
-﻿using System.Net.Mime;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using TestWpf.Infrastructure.Commands;
 using TestWpf.ViewModels.Base;
@@ -18,7 +17,7 @@ namespace TestWpf.ViewModels
             set => SetField(ref _title, value);
         }
 
-        #endregion
+        #endregion MainWindow Title
 
         #region Commands
 
@@ -33,9 +32,9 @@ namespace TestWpf.ViewModels
             Application.Current.Shutdown();
         }
 
-        #endregion
+        #endregion Close application command
 
-        #endregion
+        #endregion Commands
 
         public MainWindowViewModel()
         {
@@ -43,7 +42,7 @@ namespace TestWpf.ViewModels
 
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecute, CanCloseApplicationCommandExecuted);
 
-            #endregion
+            #endregion Commands
         }
     }
 }
