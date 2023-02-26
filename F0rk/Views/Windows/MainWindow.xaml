@@ -109,17 +109,6 @@
                     </Button>
                 </StackPanel>
             </TabItem>
-            <TabItem>
-                <StackPanel>
-                    <Image Source = "../../Pictures/Images/pepe.png"
-                           Height="123"
-                           Margin="0,80,0,0"
-                    ></Image>
-                    <Label HorizontalAlignment="Center"
-                    >Скоро здесь что-то будет.
-                    </Label>
-                </StackPanel>
-            </TabItem>
         </TabControl>
         <TextBox Text="{Binding TextBoxStatus}"
                  Grid.Row="1"
