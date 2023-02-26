@@ -62,7 +62,6 @@
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\Startup\StartupViewModel.cs" />
     <Compile Include="Views\Main\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

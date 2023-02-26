@@ -21,27 +21,12 @@ namespace TestWpf.ViewModels
 
         #region Commands
 
-        #region Close application command
-
-        public ICommand CloseApplicationCommand { get; }
-
-        private bool CanCloseApplicationCommandExecuted(object p) => true;
-
-        private void OnCloseApplicationCommandExecute(object p)
-        {
-            Application.Current.Shutdown();
-        }
-
-        #endregion Close application command
-
         #endregion Commands
 
         public MainWindowViewModel()
         {
             #region Commands
-
-            CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecute, CanCloseApplicationCommandExecuted);
-
+            
             #endregion Commands
         }
     }
