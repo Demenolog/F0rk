@@ -44,8 +44,6 @@ namespace F0rk.ViewModels
 
             DirectoryCleaner.CleanUpComplete(_1C.GetPathsToClear());
 
-            _1C.ApacheStart();
-
             TextBoxStatus = "Чистка кэша 1С завершена.";
         }
 
@@ -61,7 +59,7 @@ namespace F0rk.ViewModels
         {
             ServiceHandler.ServiceStop(DiskD.GetServicesToStop);
 
-            TasksHandler.KillTasks(DiskD.GetTasksToKill(DiskD.GetCommonTasksNames));
+            TasksHandler.KillTasks(DiskD.GetTasksToKill);
 
             DirectoryCleaner.CleanUpComplete(DiskD.GetPathsToCompleteClean);
 
@@ -80,7 +78,7 @@ namespace F0rk.ViewModels
 
         private void OnClearMailCommandExecuted(object p)
         {
-            TasksHandler.KillTasks(DiskD.GetTasksToKill(DiskD.GetEmailTasksNames));
+            TasksHandler.KillTasks("wlmail");
 
             var directory = new DirectoryInfo(DiskD.GetPathToEmails);
 
@@ -112,13 +110,43 @@ namespace F0rk.ViewModels
 
         #endregion Increase pagefile command
 
+        #region Time synchronization
+
+        public ICommand TimeSynchronizationCommand { get; }
+
+        private bool CanTimeSynchronizationExecuting(object p) => true;
+
+        private void OnTimeSynchronizationExecuted(object p)
+        {
+            Optimisation.TimeSynchronization();
+
+            TextBoxStatus = "Время синхронизировано.";
+        }
+
+        #endregion
+
+        #region ReturnLanguageBar
+
+        public ICommand LanguageBarCommand { get; }
+
+        private bool CanLanguageBarExecuting(object p) => true;
+
+        private void OnLanguageBarExecuted(object p)
+        {
+            Optimisation.ReturnLanguageBar();
+
+            TextBoxStatus = "Яз. панель восстановлена.";
+        }
+
+        #endregion
+
         #endregion Optimisation commands
 
         #region Other commands
 
         #region Restart Sap\Apache command
 
-        public ICommand RestartSapApache { get; }
+        public ICommand RestartSapApacheCommand { get; }
 
         private bool CanRestartSapApacheCommandExecuting(object p) => true;
 
@@ -133,7 +161,7 @@ namespace F0rk.ViewModels
 
         #region Unregistration pinpad command
 
-        public ICommand UnregistationPinpad { get; }
+        public ICommand UnregistationPinpadCommand { get; }
 
         private bool CanUnregistationPinpadExecuting(object p) => true;
 
@@ -150,7 +178,7 @@ namespace F0rk.ViewModels
 
         #region Registration pinpad command
 
-        public ICommand RegistrationPinpad { get; }
+        public ICommand RegistrationPinpadCommand { get; }
 
         private bool CanRegistrationPinpadExecuting(object p) => true;
 
@@ -185,15 +213,21 @@ namespace F0rk.ViewModels
 
             IncreasePagefileCommand = new LambdaCommand(OnIncreasePagefileCommandExecuted, CanIncreasePagefileCommandExecuting);
 
+            TimeSynchronizationCommand =
+                new LambdaCommand(OnTimeSynchronizationExecuted, CanTimeSynchronizationExecuting);
+
+            LanguageBarCommand =
+                new LambdaCommand(OnLanguageBarExecuted, CanLanguageBarExecuting);
+
             #endregion Optimisation commands
 
             #region Other commands
 
-            UnregistationPinpad = new LambdaCommand(OnUnregistationPinpadExecuted, CanUnregistationPinpadExecuting);
+            UnregistationPinpadCommand = new LambdaCommand(OnUnregistationPinpadExecuted, CanUnregistationPinpadExecuting);
 
-            RegistrationPinpad = new LambdaCommand(OnRegistrationPinpadExecuted, CanRegistrationPinpadExecuting);
+            RegistrationPinpadCommand = new LambdaCommand(OnRegistrationPinpadExecuted, CanRegistrationPinpadExecuting);
 
-            RestartSapApache = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
+            RestartSapApacheCommand = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
 
             #endregion Other commands
         }

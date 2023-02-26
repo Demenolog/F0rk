@@ -56,7 +56,7 @@
                                 <StackPanel>
                                     <TextBlock>-Убивает процессы winmail.</TextBlock>
                                     <TextBlock>-Удаляет все письма старше 30 дней.</TextBlock>
-                                    <TextBlock>-Папка Junk E-mail очищается полностью.</TextBlock>
+                                    <TextBlock>-Папки с мусором очищаются полностью.</TextBlock>
                                 </StackPanel>
                             </ToolTip>
                         </Button.ToolTip>
@@ -77,16 +77,49 @@
                             </ToolTip>
                         </Button.ToolTip>
                     </Button>
+                    <Button
+                        Style="{StaticResource ClearingButton}"
+                        Command="{Binding TimeSynchronizationCommand}"
+                        >Синхронизация времени
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>-Синхронизирует время.</TextBlock>
+                                    <TextBlock>-Добавляет задачу в пл. задач.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button
+                        Style="{StaticResource ClearingButton}"
+                        Command="{Binding LanguageBarCommand}"
+                    >Восстановление яз.панели
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>-Добавляет задачу в пл. задач.</TextBlock>
+                                    <TextBlock>-Выполняет добавленную задачу.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Разное">
                 <StackPanel>
                     <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding RestartSapApache}"
+                            Command="{Binding RestartSapApacheCommand}"
                             >Перезапуск Sap\Apache
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>( ͡° ͜ʖ ͡°)</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding RegistrationPinpad}"
+                            Command="{Binding RegistrationPinpadCommand}"
                             >Регистрация пинпада
                         <Button.ToolTip>
                             <ToolTip>
@@ -98,7 +131,7 @@
                         </Button.ToolTip>
                     </Button>
                     <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding UnregistationPinpad}"
+                            Command="{Binding UnregistationPinpadCommand}"
                             >Разрегистрация пинпада
                         <Button.ToolTip>
                             <ToolTip>

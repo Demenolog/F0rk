@@ -7,12 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-       
+
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="159*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Button Style="{DynamicResource ButtonStyle1}" 
                 Height="50"
-                Width="50" Click="Button_Click">
+                Width="50" Click="Button_Click" Margin="375,192,370,192">
 
         </Button>
     </Grid>
