@@ -1,5 +1,4 @@
-﻿<<<<<<< Updated upstream
-﻿using System.Windows;
+﻿﻿using System.Windows;
 
 namespace F0rk.Views.Windows
 {
