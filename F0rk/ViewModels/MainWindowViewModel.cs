@@ -7,7 +7,6 @@ using F0rk.Models.Methods.TasksHandler;
 using F0rk.ViewModels.Base;
 using System;
 using System.IO;
-using System.Threading;
 using System.Windows.Input;
 
 namespace F0rk.ViewModels
@@ -26,26 +25,7 @@ namespace F0rk.ViewModels
 
         #endregion TextBox status
 
-        #region Clearing commands
-
-        #region Clear up 1C cache command
-
-        public ICommand Clear1CCacheCommand { get; }
-
-        private bool CanClear1CCacheCommandExecuting(object p) => true;
-
-        private void OnClear1CCacheCommandExecuted(object p)
-        {
-            _1C.ApacheStop();
-
-            TasksHandler.KillTasks(_1C.GetTasksToKill());
-
-            DirectoryCleaner.CleanUpComplete(_1C.GetPathsToClear());
-
-            TextBoxStatus = "Чистка кэша 1С завершена.";
-        }
-
-        #endregion Clear up 1C cache command
+        #region Cleaning commands
 
         #region Clear up temp command
 
@@ -55,13 +35,13 @@ namespace F0rk.ViewModels
 
         private void OnClearTempCommandExecuted(object p)
         {
-            ServiceHandler.ServiceStop(DiskD.GetServicesToStop);
+            ServiceHandler.ServiceStop(HardDrive.GetServicesToStop);
 
-            TasksHandler.KillTasks(DiskD.GetTasksToKill);
+            TasksHandler.KillTasks(HardDrive.GetTasksToKill);
 
-            DirectoryCleaner.CleanUpComplete(DiskD.GetPathsToCompleteClean);
+            DirectoryCleaner.CleanUpCompletely(HardDrive.GetPathsToCompletelyClean);
 
-            DirectoryCleaner.CleanUpDirectories(DiskD.GetPathsToSubfoldersClean);
+            DirectoryCleaner.CleanUpDirectories(HardDrive.GetPathsToSubfoldersClean);
 
             TextBoxStatus = "Чистка темпа завершена.";
         }
@@ -78,7 +58,7 @@ namespace F0rk.ViewModels
         {
             TasksHandler.KillTasks("wlmail");
 
-            var directory = new DirectoryInfo(DiskD.GetPathToEmails);
+            var directory = new DirectoryInfo(HardDrive.GetPathToEmails);
 
             var todaySubtractMonth = DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0));
 
@@ -140,66 +120,9 @@ namespace F0rk.ViewModels
 
         #endregion Optimisation commands
 
-        #region Other commands
-
-        #region Restart Sap\Apache command
-
-        public ICommand RestartSapApacheCommand { get; }
-
-        private bool CanRestartSapApacheCommandExecuting(object p) => true;
-
-        private void OnRestartSapApacheCommandExecuted(object p)
-        {
-            _1C.SapApacheRestart();
-
-            TextBoxStatus = @"Службы Sap\Apache перезапущены.";
-        }
-
-        #endregion Restart Sap\Apache command
-
-        #region Unregistration pinpad command
-
-        public ICommand UnregistationPinpadCommand { get; }
-
-        private bool CanUnregistationPinpadExecuting(object p) => true;
-
-        private void OnUnregistationPinpadExecuted(object p)
-        {
-            ServiceHandler.ServiceStop(Pinpad.GetPinpadServiceName);
-
-            TasksHandler.StartTaskWithCommands("cmd", Pinpad.GetUnregistrationCommands);
-
-            TextBoxStatus = "Разрегистрация завершена.";
-        }
-
-        #endregion Unregistration pinpad command
-
-        #region Registration pinpad command
-
-        public ICommand RegistrationPinpadCommand { get; }
-
-        private bool CanRegistrationPinpadExecuting(object p) => true;
-
-        private void OnRegistrationPinpadExecuted(object p)
-        {
-            TasksHandler.StartTaskWithCommands("cmd", Pinpad.GetRegistrationCommands);
-
-            Thread.Sleep(1000);
-
-            ServiceHandler.ServiceStart(Pinpad.GetPinpadServiceName);
-
-            TextBoxStatus = "Регистрация завершена.";
-        }
-
-        #endregion Registration pinpad command
-
-        #endregion Other commands
-
         public MainWindowViewModel()
         {
-            #region Clearing commands
-
-            Clear1CCacheCommand = new LambdaCommand(OnClear1CCacheCommandExecuted, CanClear1CCacheCommandExecuting);
+            #region Cleaning commands
 
             ClearTempCommand = new LambdaCommand(OnClearTempCommandExecuted, CanClearTempCommandExecuting);
 
@@ -218,16 +141,6 @@ namespace F0rk.ViewModels
                 new LambdaCommand(OnLanguageBarExecuted, CanLanguageBarExecuting);
 
             #endregion Optimisation commands
-
-            #region Other commands
-
-            UnregistationPinpadCommand = new LambdaCommand(OnUnregistationPinpadExecuted, CanUnregistationPinpadExecuting);
-
-            RegistrationPinpadCommand = new LambdaCommand(OnRegistrationPinpadExecuted, CanRegistrationPinpadExecuting);
-
-            RestartSapApacheCommand = new LambdaCommand(OnRestartSapApacheCommandExecuted, CanRestartSapApacheCommandExecuting);
-
-            #endregion Other commands
         }
     }
 }

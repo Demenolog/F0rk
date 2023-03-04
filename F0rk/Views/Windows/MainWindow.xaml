@@ -22,27 +22,13 @@
             <TabItem Header="Чистка">
                 <StackPanel>
                     <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding Clear1CCacheCommand}"
-                            >Чистка кэша 1С
-                        <Button.ToolTip>
-                            <ToolTip>
-                                <StackPanel>
-                                    <TextBlock>-Убивает все процессы 1С.</TextBlock>
-                                    <TextBlock>-Останавливает службу апач.</TextBlock>
-                                    <TextBlock>-Удаляет кэш 1С.</TextBlock>
-                                    <TextBlock>-Запускает службу апач.</TextBlock>
-                                </StackPanel>
-                            </ToolTip>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Style="{StaticResource ClearingButton}"
                             Command="{Binding ClearTempCommand}"
                             >Чистка темпа
                         <Button.ToolTip>
                             <ToolTip>
                                 <StackPanel>
                                     <TextBlock>-Останавливает службы обновления windows.</TextBlock>
-                                    <TextBlock>-Убивает ряд процессов (1С тоже).</TextBlock>
+                                    <TextBlock>-Убивает ряд процессов.</TextBlock>
                                     <TextBlock>-Выполняет чистку темпа на диске C и D.</TextBlock>
                                 </StackPanel>
                             </ToolTip>
@@ -99,46 +85,6 @@
                                 <StackPanel>
                                     <TextBlock>-Добавляет задачу в пл. задач.</TextBlock>
                                     <TextBlock>-Выполняет добавленную задачу.</TextBlock>
-                                </StackPanel>
-                            </ToolTip>
-                        </Button.ToolTip>
-                    </Button>
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="Разное">
-                <StackPanel>
-                    <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding RestartSapApacheCommand}"
-                            >Перезапуск Sap\Apache
-                        <Button.ToolTip>
-                            <ToolTip>
-                                <StackPanel>
-                                    <TextBlock>( ͡° ͜ʖ ͡°)</TextBlock>
-                                </StackPanel>
-                            </ToolTip>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding RegistrationPinpadCommand}"
-                            >Регистрация пинпада
-                        <Button.ToolTip>
-                            <ToolTip>
-                                <StackPanel>
-                                    <TextBlock>-Регистрирует sbrf.dll и SBRFCOM.dll.</TextBlock>
-                                    <TextBlock>-Регистрирует службу Upos2Agent.</TextBlock>
-                                </StackPanel>
-                            </ToolTip>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Style="{StaticResource ClearingButton}"
-                            Command="{Binding UnregistationPinpadCommand}"
-                            >Разрегистрация пинпада
-                        <Button.ToolTip>
-                            <ToolTip>
-                                <StackPanel>
-                                    <TextBlock>-Разрегистрирует службу Upos2Agent.</TextBlock>
-                                    <TextBlock>-Удаляет службу Upos2Agent.</TextBlock>
-                                    <TextBlock>-Разрегистрирует sbrf.dll и SBRFCOM.dll.</TextBlock>
                                 </StackPanel>
                             </ToolTip>
                         </Button.ToolTip>

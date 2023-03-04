@@ -105,9 +105,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Classes\Optimisation.cs" />
-    <Compile Include="Models\Classes\DiskD.cs" />
-    <Compile Include="Models\Classes\Pinpad.cs" />
-    <Compile Include="Models\Classes\_1C.cs" />
+    <Compile Include="Models\Classes\HardDrive.cs" />
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />

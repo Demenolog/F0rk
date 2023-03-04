@@ -8,7 +8,7 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         /// <summary>
         /// Deletes every file in a folder
         /// </summary>
-        /// <param name="folders">Folders to delete files</param>
+        /// <param name="folders">Folders to delete all files</param>
         private static void DeleteAllFiles(DirectoryInfo folders)
         {
             foreach (FileInfo file in folders.GetFiles())
@@ -50,7 +50,7 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         /// <summary>
         /// Deletes all subfolders in a folder
         /// </summary>
-        /// <param name="folders">Folders to remove subfolders</param>
+        /// <param name="folders">Folders to remove all subfolders</param>
         private static void DeleteAllDirectories(DirectoryInfo folders)
         {
             foreach (DirectoryInfo subfolder in folders.GetDirectories())
@@ -70,7 +70,7 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         /// Deletes all files and subfolders at address
         /// </summary>
         /// <param name="paths">Paths to clean</param>
-        public static void CleanUpComplete(string[] paths)
+        public static void CleanUpCompletely(string[] paths)
         {
             foreach (string path in paths)
             {
@@ -85,7 +85,7 @@ namespace F0rk.Models.Methods.DirectoryCleaner
         }
 
         /// <summary>
-        /// Deletes all files in a folder and deletes all files in subfolders
+        /// Deletes all files in a folder and deletes all files in subfolders without deleting subfolders
         /// </summary>
         /// <param name="paths">Paths to clean</param>
         public static void CleanUpDirectories(string[] paths)

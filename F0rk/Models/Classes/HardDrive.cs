@@ -2,24 +2,24 @@
 
 namespace F0rk.Classes
 {
-    internal static class DiskD
+    internal static class HardDrive
     {
-        private static readonly string[] EmailTasksNames;
-        private static readonly string[] PathsesToCompleteClean;
+        private static readonly string[] EmailTaskNames;
+        private static readonly string[] PathsToCompletelyClean;
         private static readonly string[] PathsToSubfoldersClean;
         private static readonly string PathToEmails;
         private static readonly string[] Services;
         private static readonly string[] Tasks;
 
-        static DiskD()
+        static HardDrive()
         {
-            EmailTasksNames = new[]
+            EmailTaskNames = new[]
             {
                 "iexplore",
                 "wlmail"
             };
 
-            PathsesToCompleteClean = new[]
+            PathsToCompletelyClean = new[]
             {
                 @"C:\Windows\ccmsetup",
                 @"C:\Windows\Temp",
@@ -60,9 +60,9 @@ namespace F0rk.Classes
 
         public static string[] GetTasksToKill => Tasks;
 
-        public static string[] GetEmailTasksNames => EmailTasksNames;
+        public static string[] GetEmailTaskNames => EmailTaskNames;
 
-        public static string[] GetPathsToCompleteClean => PathsesToCompleteClean;
+        public static string[] GetPathsToCompletelyClean => PathsToCompletelyClean;
 
         public static string[] GetPathsToSubfoldersClean => PathsToSubfoldersClean;
 
