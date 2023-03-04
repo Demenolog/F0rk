@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace F0rk.Services.StartArgsService
+namespace Test.Services
 {
     internal interface IEnvironmentService
     {

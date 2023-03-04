@@ -6,10 +6,8 @@ using F0rk.Models.Methods.ServiceHandler;
 using F0rk.Models.Methods.TasksHandler;
 using F0rk.ViewModels.Base;
 using System;
-using System.Configuration.Install;
 using System.IO;
 using System.Threading;
-using System.Windows;
 using System.Windows.Input;
 
 namespace F0rk.ViewModels
@@ -123,7 +121,7 @@ namespace F0rk.ViewModels
             TextBoxStatus = "Время синхронизировано.";
         }
 
-        #endregion
+        #endregion Time synchronization
 
         #region ReturnLanguageBar
 
@@ -138,7 +136,7 @@ namespace F0rk.ViewModels
             TextBoxStatus = "Яз. панель восстановлена.";
         }
 
-        #endregion
+        #endregion ReturnLanguageBar
 
         #endregion Optimisation commands
 
